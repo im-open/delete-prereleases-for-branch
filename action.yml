@@ -1,18 +1,14 @@
-name: 'JavaScript Action Template'
+name: 'delete-prereleases-for-branch'
 
-description: 'Add description here'
+description: 'An action to delete pre-releases for a specified branch'
 
 inputs:
-  input-1:
-    description: 'Add a description here'
+  github-token:
+    description: 'A token with permission to delete releases in the repository.'
     required: true
-  input-2:
-    description: 'Add a description here'
-    required: false
-
-outputs:
-  output-1:
-    description: 'Add a description here'
+  branch-name:
+    description: 'The branch the releases were created for.'
+    required: true
 
 runs:
   using: 'node12'
