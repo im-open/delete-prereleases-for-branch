@@ -70,9 +70,7 @@ var require_command = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -124,20 +122,10 @@ var require_command = __commonJS({
       }
     };
     function escapeData(s) {
-      return utils_1
-        .toCommandValue(s)
-        .replace(/%/g, '%25')
-        .replace(/\r/g, '%0D')
-        .replace(/\n/g, '%0A');
+      return utils_1.toCommandValue(s).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
     }
     function escapeProperty(s) {
-      return utils_1
-        .toCommandValue(s)
-        .replace(/%/g, '%25')
-        .replace(/\r/g, '%0D')
-        .replace(/\n/g, '%0A')
-        .replace(/:/g, '%3A')
-        .replace(/,/g, '%2C');
+      return utils_1.toCommandValue(s).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A').replace(/:/g, '%3A').replace(/,/g, '%2C');
     }
   }
 });
@@ -174,8 +162,7 @@ var require_regex = __commonJS({
       value: true
     });
     exports2.default = void 0;
-    var _default =
-      /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+    var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
     exports2.default = _default;
   }
 });
@@ -275,14 +262,7 @@ var require_v1 = __commonJS({
       if (node == null || clockseq == null) {
         const seedBytes = options.random || (options.rng || _rng.default)();
         if (node == null) {
-          node = _nodeId = [
-            seedBytes[0] | 1,
-            seedBytes[1],
-            seedBytes[2],
-            seedBytes[3],
-            seedBytes[4],
-            seedBytes[5]
-          ];
+          node = _nodeId = [seedBytes[0] | 1, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
         }
         if (clockseq == null) {
           clockseq = _clockseq = ((seedBytes[6] << 8) | seedBytes[7]) & 16383;
@@ -696,9 +676,7 @@ var require_file_command = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -737,9 +715,9 @@ var require_file_command = __commonJS({
   }
 });
 
-// node_modules/@actions/core/node_modules/@actions/http-client/lib/proxy.js
+// node_modules/@actions/http-client/lib/proxy.js
 var require_proxy = __commonJS({
-  'node_modules/@actions/core/node_modules/@actions/http-client/lib/proxy.js'(exports2) {
+  'node_modules/@actions/http-client/lib/proxy.js'(exports2) {
     'use strict';
     Object.defineProperty(exports2, '__esModule', { value: true });
     exports2.checkBypass = exports2.getProxyUrl = void 0;
@@ -859,11 +837,7 @@ var require_tunnel = __commonJS({
     util.inherits(TunnelingAgent, events.EventEmitter);
     TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
       var self = this;
-      var options = mergeOptions(
-        { request: req },
-        self.options,
-        toOptions(host, port, localAddress)
-      );
+      var options = mergeOptions({ request: req }, self.options, toOptions(host, port, localAddress));
       if (self.sockets.length >= this.maxSockets) {
         self.requests.push(options);
         return;
@@ -901,8 +875,7 @@ var require_tunnel = __commonJS({
       }
       if (connectOptions.proxyAuth) {
         connectOptions.headers = connectOptions.headers || {};
-        connectOptions.headers['Proxy-Authorization'] =
-          'Basic ' + new Buffer(connectOptions.proxyAuth).toString('base64');
+        connectOptions.headers['Proxy-Authorization'] = 'Basic ' + new Buffer(connectOptions.proxyAuth).toString('base64');
       }
       debug('making CONNECT request');
       var connectReq = self.request(connectOptions);
@@ -926,9 +899,7 @@ var require_tunnel = __commonJS({
         if (res.statusCode !== 200) {
           debug('tunneling socket could not be established, statusCode=%d', res.statusCode);
           socket.destroy();
-          var error = new Error(
-            'tunneling socket could not be established, statusCode=' + res.statusCode
-          );
+          var error = new Error('tunneling socket could not be established, statusCode=' + res.statusCode);
           error.code = 'ECONNRESET';
           options.request.emit('error', error);
           self.removeSocket(placeholder);
@@ -1032,9 +1003,9 @@ var require_tunnel2 = __commonJS({
   }
 });
 
-// node_modules/@actions/core/node_modules/@actions/http-client/lib/index.js
+// node_modules/@actions/http-client/lib/index.js
 var require_lib = __commonJS({
-  'node_modules/@actions/core/node_modules/@actions/http-client/lib/index.js'(exports2) {
+  'node_modules/@actions/http-client/lib/index.js'(exports2) {
     'use strict';
     var __createBinding =
       (exports2 && exports2.__createBinding) ||
@@ -1067,9 +1038,7 @@ var require_lib = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -1170,11 +1139,7 @@ var require_lib = __commonJS({
       HttpCodes.TemporaryRedirect,
       HttpCodes.PermanentRedirect
     ];
-    var HttpResponseRetryCodes = [
-      HttpCodes.BadGateway,
-      HttpCodes.ServiceUnavailable,
-      HttpCodes.GatewayTimeout
-    ];
+    var HttpResponseRetryCodes = [HttpCodes.BadGateway, HttpCodes.ServiceUnavailable, HttpCodes.GatewayTimeout];
     var RetryableHttpVerbs = ['OPTIONS', 'GET', 'DELETE', 'HEAD'];
     var ExponentialBackoffCeiling = 10;
     var ExponentialBackoffTimeSlice = 5;
@@ -1293,11 +1258,7 @@ var require_lib = __commonJS({
       }
       getJson(requestUrl, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-            additionalHeaders,
-            Headers.Accept,
-            MediaTypes.ApplicationJson
-          );
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
           const res = yield this.get(requestUrl, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -1305,11 +1266,7 @@ var require_lib = __commonJS({
       postJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-            additionalHeaders,
-            Headers.Accept,
-            MediaTypes.ApplicationJson
-          );
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
           additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
             additionalHeaders,
             Headers.ContentType,
@@ -1322,11 +1279,7 @@ var require_lib = __commonJS({
       putJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-            additionalHeaders,
-            Headers.Accept,
-            MediaTypes.ApplicationJson
-          );
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
           additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
             additionalHeaders,
             Headers.ContentType,
@@ -1339,11 +1292,7 @@ var require_lib = __commonJS({
       patchJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-            additionalHeaders,
-            Headers.Accept,
-            MediaTypes.ApplicationJson
-          );
+          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
           additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
             additionalHeaders,
             Headers.ContentType,
@@ -1360,17 +1309,12 @@ var require_lib = __commonJS({
           }
           const parsedUrl = new URL(requestUrl);
           let info = this._prepareRequest(verb, parsedUrl, headers);
-          const maxTries =
-            this._allowRetries && RetryableHttpVerbs.includes(verb) ? this._maxRetries + 1 : 1;
+          const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb) ? this._maxRetries + 1 : 1;
           let numTries = 0;
           let response;
           do {
             response = yield this.requestRaw(info, data);
-            if (
-              response &&
-              response.message &&
-              response.message.statusCode === HttpCodes.Unauthorized
-            ) {
+            if (response && response.message && response.message.statusCode === HttpCodes.Unauthorized) {
               let authenticationHandler;
               for (const handler of this.handlers) {
                 if (handler.canHandleAuthentication(response)) {
@@ -1396,11 +1340,7 @@ var require_lib = __commonJS({
                 break;
               }
               const parsedRedirectUrl = new URL(redirectUrl);
-              if (
-                parsedUrl.protocol === 'https:' &&
-                parsedUrl.protocol !== parsedRedirectUrl.protocol &&
-                !this._allowRedirectDowngrade
-              ) {
+              if (parsedUrl.protocol === 'https:' && parsedUrl.protocol !== parsedRedirectUrl.protocol && !this._allowRedirectDowngrade) {
                 throw new Error(
                   'Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.'
                 );
@@ -1417,10 +1357,7 @@ var require_lib = __commonJS({
               response = yield this.requestRaw(info, data);
               redirectsRemaining--;
             }
-            if (
-              !response.message.statusCode ||
-              !HttpResponseRetryCodes.includes(response.message.statusCode)
-            ) {
+            if (!response.message.statusCode || !HttpResponseRetryCodes.includes(response.message.statusCode)) {
               return response;
             }
             numTries += 1;
@@ -1526,11 +1463,7 @@ var require_lib = __commonJS({
       }
       _mergeHeaders(headers) {
         if (this.requestOptions && this.requestOptions.headers) {
-          return Object.assign(
-            {},
-            lowercaseKeys(this.requestOptions.headers),
-            lowercaseKeys(headers || {})
-          );
+          return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers || {}));
         }
         return lowercaseKeys(headers || {});
       }
@@ -1662,14 +1595,13 @@ var require_lib = __commonJS({
       }
     };
     exports2.HttpClient = HttpClient;
-    var lowercaseKeys = obj =>
-      Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
+    var lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
   }
 });
 
-// node_modules/@actions/core/node_modules/@actions/http-client/lib/auth.js
+// node_modules/@actions/http-client/lib/auth.js
 var require_auth = __commonJS({
-  'node_modules/@actions/core/node_modules/@actions/http-client/lib/auth.js'(exports2) {
+  'node_modules/@actions/http-client/lib/auth.js'(exports2) {
     'use strict';
     var __awaiter =
       (exports2 && exports2.__awaiter) ||
@@ -1703,10 +1635,7 @@ var require_auth = __commonJS({
         });
       };
     Object.defineProperty(exports2, '__esModule', { value: true });
-    exports2.PersonalAccessTokenCredentialHandler =
-      exports2.BearerCredentialHandler =
-      exports2.BasicCredentialHandler =
-        void 0;
+    exports2.PersonalAccessTokenCredentialHandler = exports2.BearerCredentialHandler = exports2.BasicCredentialHandler = void 0;
     var BasicCredentialHandler = class {
       constructor(username, password) {
         this.username = username;
@@ -1716,9 +1645,7 @@ var require_auth = __commonJS({
         if (!options.headers) {
           throw Error('The request has no headers');
         }
-        options.headers['Authorization'] = `Basic ${Buffer.from(
-          `${this.username}:${this.password}`
-        ).toString('base64')}`;
+        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
       }
       canHandleAuthentication() {
         return false;
@@ -1758,9 +1685,7 @@ var require_auth = __commonJS({
         if (!options.headers) {
           throw Error('The request has no headers');
         }
-        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString(
-          'base64'
-        )}`;
+        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
       }
       canHandleAuthentication() {
         return false;
@@ -1917,17 +1842,12 @@ var require_summary = __commonJS({
         });
       };
     Object.defineProperty(exports2, '__esModule', { value: true });
-    exports2.summary =
-      exports2.markdownSummary =
-      exports2.SUMMARY_DOCS_URL =
-      exports2.SUMMARY_ENV_VAR =
-        void 0;
+    exports2.summary = exports2.markdownSummary = exports2.SUMMARY_DOCS_URL = exports2.SUMMARY_ENV_VAR = void 0;
     var os_1 = require('os');
     var fs_1 = require('fs');
     var { access, appendFile, writeFile } = fs_1.promises;
     exports2.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
-    exports2.SUMMARY_DOCS_URL =
-      'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+    exports2.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
     var Summary = class {
       constructor() {
         this._buffer = '';
@@ -1946,9 +1866,7 @@ var require_summary = __commonJS({
           try {
             yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
           } catch (_a) {
-            throw new Error(
-              `Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`
-            );
+            throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
           }
           this._filePath = pathFromEnv;
           return this._filePath;
@@ -2015,10 +1933,7 @@ var require_summary = __commonJS({
                 }
                 const { header, data, colspan, rowspan } = cell;
                 const tag = header ? 'th' : 'td';
-                const attrs = Object.assign(
-                  Object.assign({}, colspan && { colspan }),
-                  rowspan && { rowspan }
-                );
+                const attrs = Object.assign(Object.assign({}, colspan && { colspan }), rowspan && { rowspan });
                 return this.wrap(tag, data, attrs);
               })
               .join('');
@@ -2103,9 +2018,7 @@ var require_path_utils = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -2163,9 +2076,7 @@ var require_core = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -2241,10 +2152,7 @@ var require_core = __commonJS({
       process.env[name] = convertedVal;
       const filePath = process.env['GITHUB_ENV'] || '';
       if (filePath) {
-        return file_command_1.issueFileCommand(
-          'ENV',
-          file_command_1.prepareKeyValueMessage(name, val)
-        );
+        return file_command_1.issueFileCommand('ENV', file_command_1.prepareKeyValueMessage(name, val));
       }
       command_1.issueCommand('set-env', { name }, convertedVal);
     }
@@ -2297,10 +2205,7 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     function setOutput(name, value) {
       const filePath = process.env['GITHUB_OUTPUT'] || '';
       if (filePath) {
-        return file_command_1.issueFileCommand(
-          'OUTPUT',
-          file_command_1.prepareKeyValueMessage(name, value)
-        );
+        return file_command_1.issueFileCommand('OUTPUT', file_command_1.prepareKeyValueMessage(name, value));
       }
       process.stdout.write(os.EOL);
       command_1.issueCommand('set-output', { name }, utils_1.toCommandValue(value));
@@ -2324,27 +2229,15 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     }
     exports2.debug = debug;
     function error(message, properties = {}) {
-      command_1.issueCommand(
-        'error',
-        utils_1.toCommandProperties(properties),
-        message instanceof Error ? message.toString() : message
-      );
+      command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
     exports2.error = error;
     function warning(message, properties = {}) {
-      command_1.issueCommand(
-        'warning',
-        utils_1.toCommandProperties(properties),
-        message instanceof Error ? message.toString() : message
-      );
+      command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
     exports2.warning = warning;
     function notice(message, properties = {}) {
-      command_1.issueCommand(
-        'notice',
-        utils_1.toCommandProperties(properties),
-        message instanceof Error ? message.toString() : message
-      );
+      command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
     }
     exports2.notice = notice;
     function info(message) {
@@ -2375,10 +2268,7 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
     function saveState(name, value) {
       const filePath = process.env['GITHUB_STATE'] || '';
       if (filePath) {
-        return file_command_1.issueFileCommand(
-          'STATE',
-          file_command_1.prepareKeyValueMessage(name, value)
-        );
+        return file_command_1.issueFileCommand('STATE', file_command_1.prepareKeyValueMessage(name, value));
       }
       command_1.issueCommand('save-state', { name }, utils_1.toCommandValue(value));
     }
@@ -2443,9 +2333,7 @@ var require_context = __commonJS({
         this.payload = {};
         if (process.env.GITHUB_EVENT_PATH) {
           if (fs_1.existsSync(process.env.GITHUB_EVENT_PATH)) {
-            this.payload = JSON.parse(
-              fs_1.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' })
-            );
+            this.payload = JSON.parse(fs_1.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' }));
           } else {
             const path = process.env.GITHUB_EVENT_PATH;
             process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${os_1.EOL}`);
@@ -2460,24 +2348,13 @@ var require_context = __commonJS({
         this.job = process.env.GITHUB_JOB;
         this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
         this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
-        this.apiUrl =
-          (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0
-            ? _a
-            : `https://api.github.com`;
-        this.serverUrl =
-          (_b = process.env.GITHUB_SERVER_URL) !== null && _b !== void 0
-            ? _b
-            : `https://github.com`;
-        this.graphqlUrl =
-          (_c = process.env.GITHUB_GRAPHQL_URL) !== null && _c !== void 0
-            ? _c
-            : `https://api.github.com/graphql`;
+        this.apiUrl = (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
+        this.serverUrl = (_b = process.env.GITHUB_SERVER_URL) !== null && _b !== void 0 ? _b : `https://github.com`;
+        this.graphqlUrl = (_c = process.env.GITHUB_GRAPHQL_URL) !== null && _c !== void 0 ? _c : `https://api.github.com/graphql`;
       }
       get issue() {
         const payload = this.payload;
-        return Object.assign(Object.assign({}, this.repo), {
-          number: (payload.issue || payload.pull_request || payload).number
-        });
+        return Object.assign(Object.assign({}, this.repo), { number: (payload.issue || payload.pull_request || payload).number });
       }
       get repo() {
         if (process.env.GITHUB_REPOSITORY) {
@@ -2490,581 +2367,10 @@ var require_context = __commonJS({
             repo: this.payload.repository.name
           };
         }
-        throw new Error(
-          "context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'"
-        );
+        throw new Error("context.repo requires a GITHUB_REPOSITORY environment variable like 'owner/repo'");
       }
     };
     exports2.Context = Context;
-  }
-});
-
-// node_modules/@actions/http-client/proxy.js
-var require_proxy2 = __commonJS({
-  'node_modules/@actions/http-client/proxy.js'(exports2) {
-    'use strict';
-    Object.defineProperty(exports2, '__esModule', { value: true });
-    function getProxyUrl(reqUrl) {
-      let usingSsl = reqUrl.protocol === 'https:';
-      let proxyUrl;
-      if (checkBypass(reqUrl)) {
-        return proxyUrl;
-      }
-      let proxyVar;
-      if (usingSsl) {
-        proxyVar = process.env['https_proxy'] || process.env['HTTPS_PROXY'];
-      } else {
-        proxyVar = process.env['http_proxy'] || process.env['HTTP_PROXY'];
-      }
-      if (proxyVar) {
-        proxyUrl = new URL(proxyVar);
-      }
-      return proxyUrl;
-    }
-    exports2.getProxyUrl = getProxyUrl;
-    function checkBypass(reqUrl) {
-      if (!reqUrl.hostname) {
-        return false;
-      }
-      let noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
-      if (!noProxy) {
-        return false;
-      }
-      let reqPort;
-      if (reqUrl.port) {
-        reqPort = Number(reqUrl.port);
-      } else if (reqUrl.protocol === 'http:') {
-        reqPort = 80;
-      } else if (reqUrl.protocol === 'https:') {
-        reqPort = 443;
-      }
-      let upperReqHosts = [reqUrl.hostname.toUpperCase()];
-      if (typeof reqPort === 'number') {
-        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
-      }
-      for (let upperNoProxyItem of noProxy
-        .split(',')
-        .map(x => x.trim().toUpperCase())
-        .filter(x => x)) {
-        if (upperReqHosts.some(x => x === upperNoProxyItem)) {
-          return true;
-        }
-      }
-      return false;
-    }
-    exports2.checkBypass = checkBypass;
-  }
-});
-
-// node_modules/@actions/http-client/index.js
-var require_http_client = __commonJS({
-  'node_modules/@actions/http-client/index.js'(exports2) {
-    'use strict';
-    Object.defineProperty(exports2, '__esModule', { value: true });
-    var http = require('http');
-    var https = require('https');
-    var pm = require_proxy2();
-    var tunnel;
-    var HttpCodes;
-    (function (HttpCodes2) {
-      HttpCodes2[(HttpCodes2['OK'] = 200)] = 'OK';
-      HttpCodes2[(HttpCodes2['MultipleChoices'] = 300)] = 'MultipleChoices';
-      HttpCodes2[(HttpCodes2['MovedPermanently'] = 301)] = 'MovedPermanently';
-      HttpCodes2[(HttpCodes2['ResourceMoved'] = 302)] = 'ResourceMoved';
-      HttpCodes2[(HttpCodes2['SeeOther'] = 303)] = 'SeeOther';
-      HttpCodes2[(HttpCodes2['NotModified'] = 304)] = 'NotModified';
-      HttpCodes2[(HttpCodes2['UseProxy'] = 305)] = 'UseProxy';
-      HttpCodes2[(HttpCodes2['SwitchProxy'] = 306)] = 'SwitchProxy';
-      HttpCodes2[(HttpCodes2['TemporaryRedirect'] = 307)] = 'TemporaryRedirect';
-      HttpCodes2[(HttpCodes2['PermanentRedirect'] = 308)] = 'PermanentRedirect';
-      HttpCodes2[(HttpCodes2['BadRequest'] = 400)] = 'BadRequest';
-      HttpCodes2[(HttpCodes2['Unauthorized'] = 401)] = 'Unauthorized';
-      HttpCodes2[(HttpCodes2['PaymentRequired'] = 402)] = 'PaymentRequired';
-      HttpCodes2[(HttpCodes2['Forbidden'] = 403)] = 'Forbidden';
-      HttpCodes2[(HttpCodes2['NotFound'] = 404)] = 'NotFound';
-      HttpCodes2[(HttpCodes2['MethodNotAllowed'] = 405)] = 'MethodNotAllowed';
-      HttpCodes2[(HttpCodes2['NotAcceptable'] = 406)] = 'NotAcceptable';
-      HttpCodes2[(HttpCodes2['ProxyAuthenticationRequired'] = 407)] = 'ProxyAuthenticationRequired';
-      HttpCodes2[(HttpCodes2['RequestTimeout'] = 408)] = 'RequestTimeout';
-      HttpCodes2[(HttpCodes2['Conflict'] = 409)] = 'Conflict';
-      HttpCodes2[(HttpCodes2['Gone'] = 410)] = 'Gone';
-      HttpCodes2[(HttpCodes2['TooManyRequests'] = 429)] = 'TooManyRequests';
-      HttpCodes2[(HttpCodes2['InternalServerError'] = 500)] = 'InternalServerError';
-      HttpCodes2[(HttpCodes2['NotImplemented'] = 501)] = 'NotImplemented';
-      HttpCodes2[(HttpCodes2['BadGateway'] = 502)] = 'BadGateway';
-      HttpCodes2[(HttpCodes2['ServiceUnavailable'] = 503)] = 'ServiceUnavailable';
-      HttpCodes2[(HttpCodes2['GatewayTimeout'] = 504)] = 'GatewayTimeout';
-    })((HttpCodes = exports2.HttpCodes || (exports2.HttpCodes = {})));
-    var Headers;
-    (function (Headers2) {
-      Headers2['Accept'] = 'accept';
-      Headers2['ContentType'] = 'content-type';
-    })((Headers = exports2.Headers || (exports2.Headers = {})));
-    var MediaTypes;
-    (function (MediaTypes2) {
-      MediaTypes2['ApplicationJson'] = 'application/json';
-    })((MediaTypes = exports2.MediaTypes || (exports2.MediaTypes = {})));
-    function getProxyUrl(serverUrl) {
-      let proxyUrl = pm.getProxyUrl(new URL(serverUrl));
-      return proxyUrl ? proxyUrl.href : '';
-    }
-    exports2.getProxyUrl = getProxyUrl;
-    var HttpRedirectCodes = [
-      HttpCodes.MovedPermanently,
-      HttpCodes.ResourceMoved,
-      HttpCodes.SeeOther,
-      HttpCodes.TemporaryRedirect,
-      HttpCodes.PermanentRedirect
-    ];
-    var HttpResponseRetryCodes = [
-      HttpCodes.BadGateway,
-      HttpCodes.ServiceUnavailable,
-      HttpCodes.GatewayTimeout
-    ];
-    var RetryableHttpVerbs = ['OPTIONS', 'GET', 'DELETE', 'HEAD'];
-    var ExponentialBackoffCeiling = 10;
-    var ExponentialBackoffTimeSlice = 5;
-    var HttpClientError = class extends Error {
-      constructor(message, statusCode) {
-        super(message);
-        this.name = 'HttpClientError';
-        this.statusCode = statusCode;
-        Object.setPrototypeOf(this, HttpClientError.prototype);
-      }
-    };
-    exports2.HttpClientError = HttpClientError;
-    var HttpClientResponse = class {
-      constructor(message) {
-        this.message = message;
-      }
-      readBody() {
-        return new Promise(async (resolve, reject) => {
-          let output = Buffer.alloc(0);
-          this.message.on('data', chunk => {
-            output = Buffer.concat([output, chunk]);
-          });
-          this.message.on('end', () => {
-            resolve(output.toString());
-          });
-        });
-      }
-    };
-    exports2.HttpClientResponse = HttpClientResponse;
-    function isHttps(requestUrl) {
-      let parsedUrl = new URL(requestUrl);
-      return parsedUrl.protocol === 'https:';
-    }
-    exports2.isHttps = isHttps;
-    var HttpClient = class {
-      constructor(userAgent, handlers, requestOptions) {
-        this._ignoreSslError = false;
-        this._allowRedirects = true;
-        this._allowRedirectDowngrade = false;
-        this._maxRedirects = 50;
-        this._allowRetries = false;
-        this._maxRetries = 1;
-        this._keepAlive = false;
-        this._disposed = false;
-        this.userAgent = userAgent;
-        this.handlers = handlers || [];
-        this.requestOptions = requestOptions;
-        if (requestOptions) {
-          if (requestOptions.ignoreSslError != null) {
-            this._ignoreSslError = requestOptions.ignoreSslError;
-          }
-          this._socketTimeout = requestOptions.socketTimeout;
-          if (requestOptions.allowRedirects != null) {
-            this._allowRedirects = requestOptions.allowRedirects;
-          }
-          if (requestOptions.allowRedirectDowngrade != null) {
-            this._allowRedirectDowngrade = requestOptions.allowRedirectDowngrade;
-          }
-          if (requestOptions.maxRedirects != null) {
-            this._maxRedirects = Math.max(requestOptions.maxRedirects, 0);
-          }
-          if (requestOptions.keepAlive != null) {
-            this._keepAlive = requestOptions.keepAlive;
-          }
-          if (requestOptions.allowRetries != null) {
-            this._allowRetries = requestOptions.allowRetries;
-          }
-          if (requestOptions.maxRetries != null) {
-            this._maxRetries = requestOptions.maxRetries;
-          }
-        }
-      }
-      options(requestUrl, additionalHeaders) {
-        return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
-      }
-      get(requestUrl, additionalHeaders) {
-        return this.request('GET', requestUrl, null, additionalHeaders || {});
-      }
-      del(requestUrl, additionalHeaders) {
-        return this.request('DELETE', requestUrl, null, additionalHeaders || {});
-      }
-      post(requestUrl, data, additionalHeaders) {
-        return this.request('POST', requestUrl, data, additionalHeaders || {});
-      }
-      patch(requestUrl, data, additionalHeaders) {
-        return this.request('PATCH', requestUrl, data, additionalHeaders || {});
-      }
-      put(requestUrl, data, additionalHeaders) {
-        return this.request('PUT', requestUrl, data, additionalHeaders || {});
-      }
-      head(requestUrl, additionalHeaders) {
-        return this.request('HEAD', requestUrl, null, additionalHeaders || {});
-      }
-      sendStream(verb, requestUrl, stream, additionalHeaders) {
-        return this.request(verb, requestUrl, stream, additionalHeaders);
-      }
-      async getJson(requestUrl, additionalHeaders = {}) {
-        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.Accept,
-          MediaTypes.ApplicationJson
-        );
-        let res = await this.get(requestUrl, additionalHeaders);
-        return this._processResponse(res, this.requestOptions);
-      }
-      async postJson(requestUrl, obj, additionalHeaders = {}) {
-        let data = JSON.stringify(obj, null, 2);
-        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.Accept,
-          MediaTypes.ApplicationJson
-        );
-        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.ContentType,
-          MediaTypes.ApplicationJson
-        );
-        let res = await this.post(requestUrl, data, additionalHeaders);
-        return this._processResponse(res, this.requestOptions);
-      }
-      async putJson(requestUrl, obj, additionalHeaders = {}) {
-        let data = JSON.stringify(obj, null, 2);
-        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.Accept,
-          MediaTypes.ApplicationJson
-        );
-        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.ContentType,
-          MediaTypes.ApplicationJson
-        );
-        let res = await this.put(requestUrl, data, additionalHeaders);
-        return this._processResponse(res, this.requestOptions);
-      }
-      async patchJson(requestUrl, obj, additionalHeaders = {}) {
-        let data = JSON.stringify(obj, null, 2);
-        additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.Accept,
-          MediaTypes.ApplicationJson
-        );
-        additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(
-          additionalHeaders,
-          Headers.ContentType,
-          MediaTypes.ApplicationJson
-        );
-        let res = await this.patch(requestUrl, data, additionalHeaders);
-        return this._processResponse(res, this.requestOptions);
-      }
-      async request(verb, requestUrl, data, headers) {
-        if (this._disposed) {
-          throw new Error('Client has already been disposed.');
-        }
-        let parsedUrl = new URL(requestUrl);
-        let info = this._prepareRequest(verb, parsedUrl, headers);
-        let maxTries =
-          this._allowRetries && RetryableHttpVerbs.indexOf(verb) != -1 ? this._maxRetries + 1 : 1;
-        let numTries = 0;
-        let response;
-        while (numTries < maxTries) {
-          response = await this.requestRaw(info, data);
-          if (
-            response &&
-            response.message &&
-            response.message.statusCode === HttpCodes.Unauthorized
-          ) {
-            let authenticationHandler;
-            for (let i = 0; i < this.handlers.length; i++) {
-              if (this.handlers[i].canHandleAuthentication(response)) {
-                authenticationHandler = this.handlers[i];
-                break;
-              }
-            }
-            if (authenticationHandler) {
-              return authenticationHandler.handleAuthentication(this, info, data);
-            } else {
-              return response;
-            }
-          }
-          let redirectsRemaining = this._maxRedirects;
-          while (
-            HttpRedirectCodes.indexOf(response.message.statusCode) != -1 &&
-            this._allowRedirects &&
-            redirectsRemaining > 0
-          ) {
-            const redirectUrl = response.message.headers['location'];
-            if (!redirectUrl) {
-              break;
-            }
-            let parsedRedirectUrl = new URL(redirectUrl);
-            if (
-              parsedUrl.protocol == 'https:' &&
-              parsedUrl.protocol != parsedRedirectUrl.protocol &&
-              !this._allowRedirectDowngrade
-            ) {
-              throw new Error(
-                'Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.'
-              );
-            }
-            await response.readBody();
-            if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
-              for (let header in headers) {
-                if (header.toLowerCase() === 'authorization') {
-                  delete headers[header];
-                }
-              }
-            }
-            info = this._prepareRequest(verb, parsedRedirectUrl, headers);
-            response = await this.requestRaw(info, data);
-            redirectsRemaining--;
-          }
-          if (HttpResponseRetryCodes.indexOf(response.message.statusCode) == -1) {
-            return response;
-          }
-          numTries += 1;
-          if (numTries < maxTries) {
-            await response.readBody();
-            await this._performExponentialBackoff(numTries);
-          }
-        }
-        return response;
-      }
-      dispose() {
-        if (this._agent) {
-          this._agent.destroy();
-        }
-        this._disposed = true;
-      }
-      requestRaw(info, data) {
-        return new Promise((resolve, reject) => {
-          let callbackForResult = function (err, res) {
-            if (err) {
-              reject(err);
-            }
-            resolve(res);
-          };
-          this.requestRawWithCallback(info, data, callbackForResult);
-        });
-      }
-      requestRawWithCallback(info, data, onResult) {
-        let socket;
-        if (typeof data === 'string') {
-          info.options.headers['Content-Length'] = Buffer.byteLength(data, 'utf8');
-        }
-        let callbackCalled = false;
-        let handleResult = (err, res) => {
-          if (!callbackCalled) {
-            callbackCalled = true;
-            onResult(err, res);
-          }
-        };
-        let req = info.httpModule.request(info.options, msg => {
-          let res = new HttpClientResponse(msg);
-          handleResult(null, res);
-        });
-        req.on('socket', sock => {
-          socket = sock;
-        });
-        req.setTimeout(this._socketTimeout || 3 * 6e4, () => {
-          if (socket) {
-            socket.end();
-          }
-          handleResult(new Error('Request timeout: ' + info.options.path), null);
-        });
-        req.on('error', function (err) {
-          handleResult(err, null);
-        });
-        if (data && typeof data === 'string') {
-          req.write(data, 'utf8');
-        }
-        if (data && typeof data !== 'string') {
-          data.on('close', function () {
-            req.end();
-          });
-          data.pipe(req);
-        } else {
-          req.end();
-        }
-      }
-      getAgent(serverUrl) {
-        let parsedUrl = new URL(serverUrl);
-        return this._getAgent(parsedUrl);
-      }
-      _prepareRequest(method, requestUrl, headers) {
-        const info = {};
-        info.parsedUrl = requestUrl;
-        const usingSsl = info.parsedUrl.protocol === 'https:';
-        info.httpModule = usingSsl ? https : http;
-        const defaultPort = usingSsl ? 443 : 80;
-        info.options = {};
-        info.options.host = info.parsedUrl.hostname;
-        info.options.port = info.parsedUrl.port ? parseInt(info.parsedUrl.port) : defaultPort;
-        info.options.path = (info.parsedUrl.pathname || '') + (info.parsedUrl.search || '');
-        info.options.method = method;
-        info.options.headers = this._mergeHeaders(headers);
-        if (this.userAgent != null) {
-          info.options.headers['user-agent'] = this.userAgent;
-        }
-        info.options.agent = this._getAgent(info.parsedUrl);
-        if (this.handlers) {
-          this.handlers.forEach(handler => {
-            handler.prepareRequest(info.options);
-          });
-        }
-        return info;
-      }
-      _mergeHeaders(headers) {
-        const lowercaseKeys = obj =>
-          Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
-        if (this.requestOptions && this.requestOptions.headers) {
-          return Object.assign(
-            {},
-            lowercaseKeys(this.requestOptions.headers),
-            lowercaseKeys(headers)
-          );
-        }
-        return lowercaseKeys(headers || {});
-      }
-      _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
-        const lowercaseKeys = obj =>
-          Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
-        let clientHeader;
-        if (this.requestOptions && this.requestOptions.headers) {
-          clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
-        }
-        return additionalHeaders[header] || clientHeader || _default;
-      }
-      _getAgent(parsedUrl) {
-        let agent;
-        let proxyUrl = pm.getProxyUrl(parsedUrl);
-        let useProxy = proxyUrl && proxyUrl.hostname;
-        if (this._keepAlive && useProxy) {
-          agent = this._proxyAgent;
-        }
-        if (this._keepAlive && !useProxy) {
-          agent = this._agent;
-        }
-        if (!!agent) {
-          return agent;
-        }
-        const usingSsl = parsedUrl.protocol === 'https:';
-        let maxSockets = 100;
-        if (!!this.requestOptions) {
-          maxSockets = this.requestOptions.maxSockets || http.globalAgent.maxSockets;
-        }
-        if (useProxy) {
-          if (!tunnel) {
-            tunnel = require_tunnel2();
-          }
-          const agentOptions = {
-            maxSockets,
-            keepAlive: this._keepAlive,
-            proxy: {
-              ...((proxyUrl.username || proxyUrl.password) && {
-                proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
-              }),
-              host: proxyUrl.hostname,
-              port: proxyUrl.port
-            }
-          };
-          let tunnelAgent;
-          const overHttps = proxyUrl.protocol === 'https:';
-          if (usingSsl) {
-            tunnelAgent = overHttps ? tunnel.httpsOverHttps : tunnel.httpsOverHttp;
-          } else {
-            tunnelAgent = overHttps ? tunnel.httpOverHttps : tunnel.httpOverHttp;
-          }
-          agent = tunnelAgent(agentOptions);
-          this._proxyAgent = agent;
-        }
-        if (this._keepAlive && !agent) {
-          const options = { keepAlive: this._keepAlive, maxSockets };
-          agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
-          this._agent = agent;
-        }
-        if (!agent) {
-          agent = usingSsl ? https.globalAgent : http.globalAgent;
-        }
-        if (usingSsl && this._ignoreSslError) {
-          agent.options = Object.assign(agent.options || {}, {
-            rejectUnauthorized: false
-          });
-        }
-        return agent;
-      }
-      _performExponentialBackoff(retryNumber) {
-        retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
-        const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-        return new Promise(resolve => setTimeout(() => resolve(), ms));
-      }
-      static dateTimeDeserializer(key, value) {
-        if (typeof value === 'string') {
-          let a = new Date(value);
-          if (!isNaN(a.valueOf())) {
-            return a;
-          }
-        }
-        return value;
-      }
-      async _processResponse(res, options) {
-        return new Promise(async (resolve, reject) => {
-          const statusCode = res.message.statusCode;
-          const response = {
-            statusCode,
-            result: null,
-            headers: {}
-          };
-          if (statusCode == HttpCodes.NotFound) {
-            resolve(response);
-          }
-          let obj;
-          let contents;
-          try {
-            contents = await res.readBody();
-            if (contents && contents.length > 0) {
-              if (options && options.deserializeDates) {
-                obj = JSON.parse(contents, HttpClient.dateTimeDeserializer);
-              } else {
-                obj = JSON.parse(contents);
-              }
-              response.result = obj;
-            }
-            response.headers = res.message.headers;
-          } catch (err) {}
-          if (statusCode > 299) {
-            let msg;
-            if (obj && obj.message) {
-              msg = obj.message;
-            } else if (contents && contents.length > 0) {
-              msg = contents;
-            } else {
-              msg = 'Failed request: (' + statusCode + ')';
-            }
-            let err = new HttpClientError(msg, statusCode);
-            err.result = response.result;
-            reject(err);
-          } else {
-            resolve(response);
-          }
-        });
-      }
-    };
-    exports2.HttpClient = HttpClient;
   }
 });
 
@@ -3103,16 +2409,14 @@ var require_utils2 = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
       };
     Object.defineProperty(exports2, '__esModule', { value: true });
     exports2.getApiBaseUrl = exports2.getProxyAgent = exports2.getAuthString = void 0;
-    var httpClient = __importStar(require_http_client());
+    var httpClient = __importStar(require_lib());
     function getAuthString(token2, options) {
       if (!token2 && !options.auth) {
         throw new Error('Parameter token or opts.auth is required');
@@ -3390,9 +2694,7 @@ var require_dist_node2 = __commonJS({
           .filter(preview => !mergedOptions.mediaType.previews.includes(preview))
           .concat(mergedOptions.mediaType.previews);
       }
-      mergedOptions.mediaType.previews = mergedOptions.mediaType.previews.map(preview =>
-        preview.replace(/-preview/, '')
-      );
+      mergedOptions.mediaType.previews = mergedOptions.mediaType.previews.map(preview => preview.replace(/-preview/, ''));
       return mergedOptions;
     }
     function addQueryParameters(url, parameters) {
@@ -3450,8 +2752,7 @@ var require_dist_node2 = __commonJS({
       });
     }
     function encodeValue(operator, value, key) {
-      value =
-        operator === '+' || operator === '#' ? encodeReserved(value) : encodeUnreserved(value);
+      value = operator === '+' || operator === '#' ? encodeReserved(value) : encodeUnreserved(value);
       if (key) {
         return encodeUnreserved(key) + '=' + value;
       } else {
@@ -3561,14 +2862,7 @@ var require_dist_node2 = __commonJS({
       let url = (options.url || '/').replace(/:([a-z]\w+)/g, '{$1}');
       let headers = Object.assign({}, options.headers);
       let body;
-      let parameters = omit(options, [
-        'method',
-        'baseUrl',
-        'url',
-        'headers',
-        'request',
-        'mediaType'
-      ]);
+      let parameters = omit(options, ['method', 'baseUrl', 'url', 'headers', 'request', 'mediaType']);
       const urlVariableNames = extractUrlVariableNames(url);
       url = parseUrl(url).expand(parameters);
       if (!/^http/.test(url)) {
@@ -3583,12 +2877,7 @@ var require_dist_node2 = __commonJS({
         if (options.mediaType.format) {
           headers.accept = headers.accept
             .split(/,/)
-            .map(preview =>
-              preview.replace(
-                /application\/vnd(\.\w+)(\.v3)?(\.\w+)?(\+json)?$/,
-                `application/vnd$1$2.${options.mediaType.format}`
-              )
-            )
+            .map(preview => preview.replace(/application\/vnd(\.\w+)(\.v3)?(\.\w+)?(\+json)?$/, `application/vnd$1$2.${options.mediaType.format}`))
             .join(',');
         }
         if (options.mediaType.previews.length) {
@@ -3693,12 +2982,8 @@ var require_lib2 = __commonJS({
       }
       const lowerBound = typeOpts.unsigned ? 0 : -Math.pow(2, bitLength);
       const upperBound = Math.pow(2, bitLength) - 1;
-      const moduloVal = typeOpts.moduloBitLength
-        ? Math.pow(2, typeOpts.moduloBitLength)
-        : Math.pow(2, bitLength);
-      const moduloBound = typeOpts.moduloBitLength
-        ? Math.pow(2, typeOpts.moduloBitLength - 1)
-        : Math.pow(2, bitLength - 1);
+      const moduloVal = typeOpts.moduloBitLength ? Math.pow(2, typeOpts.moduloBitLength) : Math.pow(2, bitLength);
+      const moduloBound = typeOpts.moduloBitLength ? Math.pow(2, typeOpts.moduloBitLength - 1) : Math.pow(2, bitLength - 1);
       return function (V, opts) {
         if (!opts) opts = {};
         let x = +V;
@@ -3748,10 +3033,7 @@ var require_lib2 = __commonJS({
     conversions['long'] = createNumberConversion(32, { unsigned: false });
     conversions['unsigned long'] = createNumberConversion(32, { unsigned: true });
     conversions['long long'] = createNumberConversion(32, { unsigned: false, moduloBitLength: 64 });
-    conversions['unsigned long long'] = createNumberConversion(32, {
-      unsigned: true,
-      moduloBitLength: 64
-    });
+    conversions['unsigned long long'] = createNumberConversion(32, { unsigned: true, moduloBitLength: 64 });
     conversions['double'] = function (V) {
       const x = +V;
       if (!Number.isFinite(x)) {
@@ -9110,10 +8392,7 @@ var require_mappingTable = __commonJS({
       [
         [65018, 65018],
         'disallowed_STD3_mapped',
-        [
-          1589, 1604, 1609, 32, 1575, 1604, 1604, 1607, 32, 1593, 1604, 1610, 1607, 32, 1608, 1587,
-          1604, 1605
-        ]
+        [1589, 1604, 1609, 32, 1575, 1604, 1604, 1607, 32, 1593, 1604, 1610, 1607, 32, 1608, 1587, 1604, 1605]
       ],
       [[65019, 65019], 'disallowed_STD3_mapped', [1580, 1604, 32, 1580, 1604, 1575, 1604, 1607]],
       [[65020, 65020], 'mapped', [1585, 1740, 1575, 1604]],
@@ -12155,9 +11434,7 @@ var require_tr46 = __commonJS({
         var status = findStatus(label.codePointAt(i));
         if (
           (processing === PROCESSING_OPTIONS.TRANSITIONAL && status[1] !== 'valid') ||
-          (processing === PROCESSING_OPTIONS.NONTRANSITIONAL &&
-            status[1] !== 'valid' &&
-            status[1] !== 'deviation')
+          (processing === PROCESSING_OPTIONS.NONTRANSITIONAL && status[1] !== 'valid' && status[1] !== 'deviation')
         ) {
           error = true;
           break;
@@ -12269,11 +11546,7 @@ var require_url_state_machine = __commonJS({
       return isASCIIAlpha(cp1) && (cp2 === 58 || cp2 === 124);
     }
     function isWindowsDriveLetterString(string) {
-      return (
-        string.length === 2 &&
-        isASCIIAlpha(string.codePointAt(0)) &&
-        (string[1] === ':' || string[1] === '|')
-      );
+      return string.length === 2 && isASCIIAlpha(string.codePointAt(0)) && (string[1] === ':' || string[1] === '|');
     }
     function isNormalizedWindowsDriveLetterString(string) {
       return string.length === 2 && isASCIIAlpha(string.codePointAt(0)) && string[1] === ':';
@@ -12548,12 +11821,7 @@ var require_url_state_machine = __commonJS({
         return parseOpaqueHost(input);
       }
       const domain = utf8PercentDecode(input);
-      const asciiDomain = tr46.toASCII(
-        domain,
-        false,
-        tr46.PROCESSING_OPTIONS.NONTRANSITIONAL,
-        false
-      );
+      const asciiDomain = tr46.toASCII(domain, false, tr46.PROCESSING_OPTIONS.NONTRANSITIONAL, false);
       if (asciiDomain === null) {
         return failure;
       }
@@ -12731,11 +11999,7 @@ var require_url_state_machine = __commonJS({
             this.parseError = true;
           }
           this.state = 'file';
-        } else if (
-          isSpecial(this.url) &&
-          this.base !== null &&
-          this.base.scheme === this.url.scheme
-        ) {
+        } else if (isSpecial(this.url) && this.base !== null && this.base.scheme === this.url.scheme) {
           this.state = 'special relative or authority';
         } else if (isSpecial(this.url)) {
           this.state = 'special authority slashes';
@@ -12776,18 +12040,17 @@ var require_url_state_machine = __commonJS({
       }
       return true;
     };
-    URLStateMachine.prototype['parse special relative or authority'] =
-      function parseSpecialRelativeOrAuthority(c) {
-        if (c === 47 && this.input[this.pointer + 1] === 47) {
-          this.state = 'special authority ignore slashes';
-          ++this.pointer;
-        } else {
-          this.parseError = true;
-          this.state = 'relative';
-          --this.pointer;
-        }
-        return true;
-      };
+    URLStateMachine.prototype['parse special relative or authority'] = function parseSpecialRelativeOrAuthority(c) {
+      if (c === 47 && this.input[this.pointer + 1] === 47) {
+        this.state = 'special authority ignore slashes';
+        ++this.pointer;
+      } else {
+        this.parseError = true;
+        this.state = 'relative';
+        --this.pointer;
+      }
+      return true;
+    };
     URLStateMachine.prototype['parse path or authority'] = function parsePathOrAuthority(c) {
       if (c === 47) {
         this.state = 'authority';
@@ -12857,28 +12120,26 @@ var require_url_state_machine = __commonJS({
       }
       return true;
     };
-    URLStateMachine.prototype['parse special authority slashes'] =
-      function parseSpecialAuthoritySlashes(c) {
-        if (c === 47 && this.input[this.pointer + 1] === 47) {
-          this.state = 'special authority ignore slashes';
-          ++this.pointer;
-        } else {
-          this.parseError = true;
-          this.state = 'special authority ignore slashes';
-          --this.pointer;
-        }
-        return true;
-      };
-    URLStateMachine.prototype['parse special authority ignore slashes'] =
-      function parseSpecialAuthorityIgnoreSlashes(c) {
-        if (c !== 47 && c !== 92) {
-          this.state = 'authority';
-          --this.pointer;
-        } else {
-          this.parseError = true;
-        }
-        return true;
-      };
+    URLStateMachine.prototype['parse special authority slashes'] = function parseSpecialAuthoritySlashes(c) {
+      if (c === 47 && this.input[this.pointer + 1] === 47) {
+        this.state = 'special authority ignore slashes';
+        ++this.pointer;
+      } else {
+        this.parseError = true;
+        this.state = 'special authority ignore slashes';
+        --this.pointer;
+      }
+      return true;
+    };
+    URLStateMachine.prototype['parse special authority ignore slashes'] = function parseSpecialAuthorityIgnoreSlashes(c) {
+      if (c !== 47 && c !== 92) {
+        this.state = 'authority';
+        --this.pointer;
+      } else {
+        this.parseError = true;
+      }
+      return true;
+    };
     URLStateMachine.prototype['parse authority'] = function parseAuthority(c, cStr) {
       if (c === 64) {
         this.parseError = true;
@@ -12901,13 +12162,7 @@ var require_url_state_machine = __commonJS({
           }
         }
         this.buffer = '';
-      } else if (
-        isNaN(c) ||
-        c === 47 ||
-        c === 63 ||
-        c === 35 ||
-        (isSpecial(this.url) && c === 92)
-      ) {
+      } else if (isNaN(c) || c === 47 || c === 63 || c === 35 || (isSpecial(this.url) && c === 92)) {
         if (this.atFlag && this.buffer === '') {
           this.parseError = true;
           return failure;
@@ -12920,76 +12175,58 @@ var require_url_state_machine = __commonJS({
       }
       return true;
     };
-    URLStateMachine.prototype['parse hostname'] = URLStateMachine.prototype['parse host'] =
-      function parseHostName(c, cStr) {
-        if (this.stateOverride && this.url.scheme === 'file') {
-          --this.pointer;
-          this.state = 'file host';
-        } else if (c === 58 && !this.arrFlag) {
-          if (this.buffer === '') {
-            this.parseError = true;
-            return failure;
-          }
-          const host = parseHost(this.buffer, isSpecial(this.url));
-          if (host === failure) {
-            return failure;
-          }
-          this.url.host = host;
-          this.buffer = '';
-          this.state = 'port';
-          if (this.stateOverride === 'hostname') {
-            return false;
-          }
-        } else if (
-          isNaN(c) ||
-          c === 47 ||
-          c === 63 ||
-          c === 35 ||
-          (isSpecial(this.url) && c === 92)
-        ) {
-          --this.pointer;
-          if (isSpecial(this.url) && this.buffer === '') {
-            this.parseError = true;
-            return failure;
-          } else if (
-            this.stateOverride &&
-            this.buffer === '' &&
-            (includesCredentials(this.url) || this.url.port !== null)
-          ) {
-            this.parseError = true;
-            return false;
-          }
-          const host = parseHost(this.buffer, isSpecial(this.url));
-          if (host === failure) {
-            return failure;
-          }
-          this.url.host = host;
-          this.buffer = '';
-          this.state = 'path start';
-          if (this.stateOverride) {
-            return false;
-          }
-        } else {
-          if (c === 91) {
-            this.arrFlag = true;
-          } else if (c === 93) {
-            this.arrFlag = false;
-          }
-          this.buffer += cStr;
+    URLStateMachine.prototype['parse hostname'] = URLStateMachine.prototype['parse host'] = function parseHostName(c, cStr) {
+      if (this.stateOverride && this.url.scheme === 'file') {
+        --this.pointer;
+        this.state = 'file host';
+      } else if (c === 58 && !this.arrFlag) {
+        if (this.buffer === '') {
+          this.parseError = true;
+          return failure;
         }
-        return true;
-      };
+        const host = parseHost(this.buffer, isSpecial(this.url));
+        if (host === failure) {
+          return failure;
+        }
+        this.url.host = host;
+        this.buffer = '';
+        this.state = 'port';
+        if (this.stateOverride === 'hostname') {
+          return false;
+        }
+      } else if (isNaN(c) || c === 47 || c === 63 || c === 35 || (isSpecial(this.url) && c === 92)) {
+        --this.pointer;
+        if (isSpecial(this.url) && this.buffer === '') {
+          this.parseError = true;
+          return failure;
+        } else if (this.stateOverride && this.buffer === '' && (includesCredentials(this.url) || this.url.port !== null)) {
+          this.parseError = true;
+          return false;
+        }
+        const host = parseHost(this.buffer, isSpecial(this.url));
+        if (host === failure) {
+          return failure;
+        }
+        this.url.host = host;
+        this.buffer = '';
+        this.state = 'path start';
+        if (this.stateOverride) {
+          return false;
+        }
+      } else {
+        if (c === 91) {
+          this.arrFlag = true;
+        } else if (c === 93) {
+          this.arrFlag = false;
+        }
+        this.buffer += cStr;
+      }
+      return true;
+    };
     URLStateMachine.prototype['parse port'] = function parsePort(c, cStr) {
       if (isASCIIDigit(c)) {
         this.buffer += cStr;
-      } else if (
-        isNaN(c) ||
-        c === 47 ||
-        c === 63 ||
-        c === 35 ||
-        (isSpecial(this.url) && c === 92) ||
-        this.stateOverride
-      ) {
+      } else if (isNaN(c) || c === 47 || c === 63 || c === 35 || (isSpecial(this.url) && c === 92) || this.stateOverride) {
         if (this.buffer !== '') {
           const port = parseInt(this.buffer);
           if (port > Math.pow(2, 16) - 1) {
@@ -13038,8 +12275,7 @@ var require_url_state_machine = __commonJS({
           if (
             this.input.length - this.pointer - 1 === 0 ||
             !isWindowsDriveLetterCodePoints(c, this.input[this.pointer + 1]) ||
-            (this.input.length - this.pointer - 1 >= 2 &&
-              !fileOtherwiseCodePoints.has(this.input[this.pointer + 2]))
+            (this.input.length - this.pointer - 1 >= 2 && !fileOtherwiseCodePoints.has(this.input[this.pointer + 2]))
           ) {
             this.url.host = this.base.host;
             this.url.path = this.base.path.slice();
@@ -13131,12 +12367,7 @@ var require_url_state_machine = __commonJS({
       return true;
     };
     URLStateMachine.prototype['parse path'] = function parsePath(c) {
-      if (
-        isNaN(c) ||
-        c === 47 ||
-        (isSpecial(this.url) && c === 92) ||
-        (!this.stateOverride && (c === 63 || c === 35))
-      ) {
+      if (isNaN(c) || c === 47 || (isSpecial(this.url) && c === 92) || (!this.stateOverride && (c === 63 || c === 35))) {
         if (isSpecial(this.url) && c === 92) {
           this.parseError = true;
         }
@@ -13148,11 +12379,7 @@ var require_url_state_machine = __commonJS({
         } else if (isSingleDot(this.buffer) && c !== 47 && !(isSpecial(this.url) && c === 92)) {
           this.url.path.push('');
         } else if (!isSingleDot(this.buffer)) {
-          if (
-            this.url.scheme === 'file' &&
-            this.url.path.length === 0 &&
-            isWindowsDriveLetterString(this.buffer)
-          ) {
+          if (this.url.scheme === 'file' && this.url.path.length === 0 && isWindowsDriveLetterString(this.buffer)) {
             if (this.url.host !== '' && this.url.host !== null) {
               this.parseError = true;
               this.url.host = '';
@@ -13177,40 +12404,33 @@ var require_url_state_machine = __commonJS({
           this.state = 'fragment';
         }
       } else {
-        if (
-          c === 37 &&
-          (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))
-        ) {
+        if (c === 37 && (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))) {
           this.parseError = true;
         }
         this.buffer += percentEncodeChar(c, isPathPercentEncode);
       }
       return true;
     };
-    URLStateMachine.prototype['parse cannot-be-a-base-URL path'] =
-      function parseCannotBeABaseURLPath(c) {
-        if (c === 63) {
-          this.url.query = '';
-          this.state = 'query';
-        } else if (c === 35) {
-          this.url.fragment = '';
-          this.state = 'fragment';
-        } else {
-          if (!isNaN(c) && c !== 37) {
-            this.parseError = true;
-          }
-          if (
-            c === 37 &&
-            (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))
-          ) {
-            this.parseError = true;
-          }
-          if (!isNaN(c)) {
-            this.url.path[0] = this.url.path[0] + percentEncodeChar(c, isC0ControlPercentEncode);
-          }
+    URLStateMachine.prototype['parse cannot-be-a-base-URL path'] = function parseCannotBeABaseURLPath(c) {
+      if (c === 63) {
+        this.url.query = '';
+        this.state = 'query';
+      } else if (c === 35) {
+        this.url.fragment = '';
+        this.state = 'fragment';
+      } else {
+        if (!isNaN(c) && c !== 37) {
+          this.parseError = true;
         }
-        return true;
-      };
+        if (c === 37 && (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))) {
+          this.parseError = true;
+        }
+        if (!isNaN(c)) {
+          this.url.path[0] = this.url.path[0] + percentEncodeChar(c, isC0ControlPercentEncode);
+        }
+      }
+      return true;
+    };
     URLStateMachine.prototype['parse query'] = function parseQuery(c, cStr) {
       if (isNaN(c) || (!this.stateOverride && c === 35)) {
         if (!isSpecial(this.url) || this.url.scheme === 'ws' || this.url.scheme === 'wss') {
@@ -13218,14 +12438,7 @@ var require_url_state_machine = __commonJS({
         }
         const buffer = new Buffer(this.buffer);
         for (let i = 0; i < buffer.length; ++i) {
-          if (
-            buffer[i] < 33 ||
-            buffer[i] > 126 ||
-            buffer[i] === 34 ||
-            buffer[i] === 35 ||
-            buffer[i] === 60 ||
-            buffer[i] === 62
-          ) {
+          if (buffer[i] < 33 || buffer[i] > 126 || buffer[i] === 34 || buffer[i] === 35 || buffer[i] === 60 || buffer[i] === 62) {
             this.url.query += percentEncode(buffer[i]);
           } else {
             this.url.query += String.fromCodePoint(buffer[i]);
@@ -13237,10 +12450,7 @@ var require_url_state_machine = __commonJS({
           this.state = 'fragment';
         }
       } else {
-        if (
-          c === 37 &&
-          (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))
-        ) {
+        if (c === 37 && (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))) {
           this.parseError = true;
         }
         this.buffer += cStr;
@@ -13252,10 +12462,7 @@ var require_url_state_machine = __commonJS({
       } else if (c === 0) {
         this.parseError = true;
       } else {
-        if (
-          c === 37 &&
-          (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))
-        ) {
+        if (c === 37 && (!isASCIIHex(this.input[this.pointer + 1]) || !isASCIIHex(this.input[this.pointer + 2]))) {
           this.parseError = true;
         }
         this.url.fragment += percentEncodeChar(c, isC0ControlPercentEncode);
@@ -13333,13 +12540,7 @@ var require_url_state_machine = __commonJS({
       if (options === void 0) {
         options = {};
       }
-      const usm = new URLStateMachine(
-        input,
-        options.baseURL,
-        options.encodingOverride,
-        options.url,
-        options.stateOverride
-      );
+      const usm = new URLStateMachine(input, options.baseURL, options.encodingOverride, options.url, options.stateOverride);
       if (usm.failure) {
         return 'failure';
       }
@@ -13368,10 +12569,7 @@ var require_url_state_machine = __commonJS({
       if (options === void 0) {
         options = {};
       }
-      return module2.exports.basicURLParse(input, {
-        baseURL: options.baseURL,
-        encodingOverride: options.encodingOverride
-      });
+      return module2.exports.basicURLParse(input, { baseURL: options.baseURL, encodingOverride: options.encodingOverride });
     };
   }
 });
@@ -13543,16 +12741,10 @@ var require_URL = __commonJS({
     var impl = utils.implSymbol;
     function URL2(url) {
       if (!this || this[impl] || !(this instanceof URL2)) {
-        throw new TypeError(
-          "Failed to construct 'URL': Please use the 'new' operator, this DOM object constructor cannot be called as a function."
-        );
+        throw new TypeError("Failed to construct 'URL': Please use the 'new' operator, this DOM object constructor cannot be called as a function.");
       }
       if (arguments.length < 1) {
-        throw new TypeError(
-          "Failed to construct 'URL': 1 argument required, but only " +
-            arguments.length +
-            ' present.'
-        );
+        throw new TypeError("Failed to construct 'URL': 1 argument required, but only " + arguments.length + ' present.');
       }
       const args = [];
       for (let i = 0; i < arguments.length && i < 2; ++i) {
@@ -13901,11 +13093,7 @@ var require_lib3 = __commonJS({
           const error =
             err.name === 'AbortError'
               ? err
-              : new FetchError(
-                  `Invalid response body while trying to fetch ${_this.url}: ${err.message}`,
-                  'system',
-                  err
-                );
+              : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, 'system', err);
           _this[INTERNALS].error = error;
         });
       }
@@ -13941,12 +13129,7 @@ var require_lib3 = __commonJS({
           try {
             return JSON.parse(buffer.toString());
           } catch (err) {
-            return Body.Promise.reject(
-              new FetchError(
-                `invalid json response body at ${_this2.url} reason: ${err.message}`,
-                'invalid-json'
-              )
-            );
+            return Body.Promise.reject(new FetchError(`invalid json response body at ${_this2.url} reason: ${err.message}`, 'invalid-json'));
           }
         });
       },
@@ -14011,12 +13194,7 @@ var require_lib3 = __commonJS({
         if (_this4.timeout) {
           resTimeout = setTimeout(function () {
             abort = true;
-            reject(
-              new FetchError(
-                `Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`,
-                'body-timeout'
-              )
-            );
+            reject(new FetchError(`Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`, 'body-timeout'));
           }, _this4.timeout);
         }
         body.on('error', function (err) {
@@ -14024,13 +13202,7 @@ var require_lib3 = __commonJS({
             abort = true;
             reject(err);
           } else {
-            reject(
-              new FetchError(
-                `Invalid response body while trying to fetch ${_this4.url}: ${err.message}`,
-                'system',
-                err
-              )
-            );
+            reject(new FetchError(`Invalid response body while trying to fetch ${_this4.url}: ${err.message}`, 'system', err));
           }
         });
         body.on('data', function (chunk) {
@@ -14039,9 +13211,7 @@ var require_lib3 = __commonJS({
           }
           if (_this4.size && accumBytes + chunk.length > _this4.size) {
             abort = true;
-            reject(
-              new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size')
-            );
+            reject(new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size'));
             return;
           }
           accumBytes += chunk.length;
@@ -14055,22 +13225,14 @@ var require_lib3 = __commonJS({
           try {
             resolve(Buffer.concat(accum, accumBytes));
           } catch (err) {
-            reject(
-              new FetchError(
-                `Could not create Buffer from response body for ${_this4.url}: ${err.message}`,
-                'system',
-                err
-              )
-            );
+            reject(new FetchError(`Could not create Buffer from response body for ${_this4.url}: ${err.message}`, 'system', err));
           }
         });
       });
     }
     function convertBody(buffer, headers) {
       if (typeof convert !== 'function') {
-        throw new Error(
-          'The package `encoding` must be installed to use the textConverted() function'
-        );
+        throw new Error('The package `encoding` must be installed to use the textConverted() function');
       }
       const ct = headers.get('content-type');
       let charset = 'utf-8';
@@ -14183,10 +13345,7 @@ var require_lib3 = __commonJS({
       } else if (Buffer.isBuffer(body)) {
         return body.length;
       } else if (body && typeof body.getLengthSync === 'function') {
-        if (
-          (body._lengthRetrievers && body._lengthRetrievers.length == 0) ||
-          (body.hasKnownLength && body.hasKnownLength())
-        ) {
+        if ((body._lengthRetrievers && body._lengthRetrievers.length == 0) || (body.hasKnownLength && body.hasKnownLength())) {
           return body.getLengthSync();
         }
         return null;
@@ -14555,18 +13714,10 @@ var require_lib3 = __commonJS({
         }
         let method = init.method || input.method || 'GET';
         method = method.toUpperCase();
-        if (
-          (init.body != null || (isRequest(input) && input.body !== null)) &&
-          (method === 'GET' || method === 'HEAD')
-        ) {
+        if ((init.body != null || (isRequest(input) && input.body !== null)) && (method === 'GET' || method === 'HEAD')) {
           throw new TypeError('Request with GET/HEAD method cannot have body');
         }
-        let inputBody =
-          init.body != null
-            ? init.body
-            : isRequest(input) && input.body !== null
-            ? clone(input)
-            : null;
+        let inputBody = init.body != null ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
         Body.call(this, inputBody, {
           timeout: init.timeout || input.timeout || 0,
           size: init.size || input.size || 0
@@ -14590,14 +13741,8 @@ var require_lib3 = __commonJS({
           parsedURL,
           signal
         };
-        this.follow =
-          init.follow !== void 0 ? init.follow : input.follow !== void 0 ? input.follow : 20;
-        this.compress =
-          init.compress !== void 0
-            ? init.compress
-            : input.compress !== void 0
-            ? input.compress
-            : true;
+        this.follow = init.follow !== void 0 ? init.follow : input.follow !== void 0 ? input.follow : 20;
+        this.compress = init.compress !== void 0 ? init.compress : input.compress !== void 0 ? input.compress : true;
         this.counter = init.counter || input.counter || 0;
         this.agent = init.agent || input.agent;
       }
@@ -14647,14 +13792,8 @@ var require_lib3 = __commonJS({
       if (!/^https?:$/.test(parsedURL.protocol)) {
         throw new TypeError('Only HTTP(S) protocols are supported');
       }
-      if (
-        request.signal &&
-        request.body instanceof Stream.Readable &&
-        !streamDestructionSupported
-      ) {
-        throw new Error(
-          'Cancellation of streamed requests with AbortSignal is not supported in node < 8'
-        );
+      if (request.signal && request.body instanceof Stream.Readable && !streamDestructionSupported) {
+        throw new Error('Cancellation of streamed requests with AbortSignal is not supported in node < 8');
       }
       let contentLengthValue = null;
       if (request.body == null && /^(POST|PUT)$/i.test(request.method)) {
@@ -14751,13 +13890,7 @@ var require_lib3 = __commonJS({
           });
         }
         req.on('error', function (err) {
-          reject(
-            new FetchError(
-              `request to ${request.url} failed, reason: ${err.message}`,
-              'system',
-              err
-            )
-          );
+          reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
           finalize();
         });
         req.on('response', function (res) {
@@ -14770,24 +13903,14 @@ var require_lib3 = __commonJS({
               locationURL = location === null ? null : new URL$1(location, request.url).toString();
             } catch (err) {
               if (request.redirect !== 'manual') {
-                reject(
-                  new FetchError(
-                    `uri requested responds with an invalid redirect URL: ${location}`,
-                    'invalid-redirect'
-                  )
-                );
+                reject(new FetchError(`uri requested responds with an invalid redirect URL: ${location}`, 'invalid-redirect'));
                 finalize();
                 return;
               }
             }
             switch (request.redirect) {
               case 'error':
-                reject(
-                  new FetchError(
-                    `uri requested responds with a redirect, redirect mode is set to error: ${request.url}`,
-                    'no-redirect'
-                  )
-                );
+                reject(new FetchError(`uri requested responds with a redirect, redirect mode is set to error: ${request.url}`, 'no-redirect'));
                 finalize();
                 return;
               case 'manual':
@@ -14804,9 +13927,7 @@ var require_lib3 = __commonJS({
                   break;
                 }
                 if (request.counter >= request.follow) {
-                  reject(
-                    new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect')
-                  );
+                  reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
                   finalize();
                   return;
                 }
@@ -14828,19 +13949,11 @@ var require_lib3 = __commonJS({
                   }
                 }
                 if (res.statusCode !== 303 && request.body && getTotalBytes(request) === null) {
-                  reject(
-                    new FetchError(
-                      'Cannot follow redirect with body being a readable stream',
-                      'unsupported-redirect'
-                    )
-                  );
+                  reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
                   finalize();
                   return;
                 }
-                if (
-                  res.statusCode === 303 ||
-                  ((res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST')
-                ) {
+                if (res.statusCode === 303 || ((res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST')) {
                   requestOpts.method = 'GET';
                   requestOpts.body = void 0;
                   requestOpts.headers.delete('content-length');
@@ -14864,13 +13977,7 @@ var require_lib3 = __commonJS({
             counter: request.counter
           };
           const codings = headers.get('Content-Encoding');
-          if (
-            !request.compress ||
-            request.method === 'HEAD' ||
-            codings === null ||
-            res.statusCode === 204 ||
-            res.statusCode === 304
-          ) {
+          if (!request.compress || request.method === 'HEAD' || codings === null || res.statusCode === 204 || res.statusCode === 304) {
             response = new Response(body, response_options);
             resolve(response);
             return;
@@ -15054,21 +14161,13 @@ var require_dist_node4 = __commonJS({
         this.request = requestCopy;
         Object.defineProperty(this, 'code', {
           get() {
-            logOnceCode(
-              new deprecation.Deprecation(
-                '[@octokit/request-error] `error.code` is deprecated, use `error.status`.'
-              )
-            );
+            logOnceCode(new deprecation.Deprecation('[@octokit/request-error] `error.code` is deprecated, use `error.status`.'));
             return statusCode;
           }
         });
         Object.defineProperty(this, 'headers', {
           get() {
-            logOnceHeaders(
-              new deprecation.Deprecation(
-                '[@octokit/request-error] `error.headers` is deprecated, use `error.response.headers`.'
-              )
-            );
+            logOnceHeaders(new deprecation.Deprecation('[@octokit/request-error] `error.headers` is deprecated, use `error.response.headers`.'));
             return headers || {};
           }
         });
@@ -15091,13 +14190,12 @@ var require_dist_node5 = __commonJS({
     var isPlainObject = require_is_plain_object();
     var nodeFetch = _interopDefault(require_lib3());
     var requestError = require_dist_node4();
-    var VERSION = '5.6.1';
+    var VERSION = '5.6.3';
     function getBufferResponse(response) {
       return response.arrayBuffer();
     }
     function fetchWrapper(requestOptions) {
-      const log =
-        requestOptions.request && requestOptions.request.log ? requestOptions.request.log : console;
+      const log = requestOptions.request && requestOptions.request.log ? requestOptions.request.log : console;
       if (isPlainObject.isPlainObject(requestOptions.body) || Array.isArray(requestOptions.body)) {
         requestOptions.body = JSON.stringify(requestOptions.body);
       }
@@ -15127,9 +14225,7 @@ var require_dist_node5 = __commonJS({
             const matches = headers.link && headers.link.match(/<([^>]+)>; rel="deprecation"/);
             const deprecationLink = matches && matches.pop();
             log.warn(
-              `[@octokit/request] "${requestOptions.method} ${
-                requestOptions.url
-              }" is deprecated. It is scheduled to be removed on ${headers.sunset}${
+              `[@octokit/request] "${requestOptions.method} ${requestOptions.url}" is deprecated. It is scheduled to be removed on ${headers.sunset}${
                 deprecationLink ? `. See ${deprecationLink}` : ''
               }`
             );
@@ -15270,29 +14366,17 @@ var require_dist_node6 = __commonJS({
         }
       }
     };
-    var NON_VARIABLE_OPTIONS = [
-      'method',
-      'baseUrl',
-      'url',
-      'headers',
-      'request',
-      'query',
-      'mediaType'
-    ];
+    var NON_VARIABLE_OPTIONS = ['method', 'baseUrl', 'url', 'headers', 'request', 'query', 'mediaType'];
     var FORBIDDEN_VARIABLE_OPTIONS = ['query', 'method', 'url'];
     var GHES_V3_SUFFIX_REGEX = /\/api\/v3\/?$/;
     function graphql(request2, query, options) {
       if (options) {
         if (typeof query === 'string' && 'query' in options) {
-          return Promise.reject(
-            new Error(`[@octokit/graphql] "query" cannot be used as variable name`)
-          );
+          return Promise.reject(new Error(`[@octokit/graphql] "query" cannot be used as variable name`));
         }
         for (const key in options) {
           if (!FORBIDDEN_VARIABLE_OPTIONS.includes(key)) continue;
-          return Promise.reject(
-            new Error(`[@octokit/graphql] "${key}" cannot be used as variable name`)
-          );
+          return Promise.reject(new Error(`[@octokit/graphql] "${key}" cannot be used as variable name`));
         }
       }
       const parsedOptions =
@@ -15364,9 +14448,14 @@ var require_dist_node7 = __commonJS({
   'node_modules/@octokit/auth-token/dist-node/index.js'(exports2) {
     'use strict';
     Object.defineProperty(exports2, '__esModule', { value: true });
+    var REGEX_IS_INSTALLATION_LEGACY = /^v1\./;
+    var REGEX_IS_INSTALLATION = /^ghs_/;
+    var REGEX_IS_USER_TO_SERVER = /^ghu_/;
     async function auth(token2) {
-      const tokenType =
-        token2.split(/\./).length === 3 ? 'app' : /^v\d+\./.test(token2) ? 'installation' : 'oauth';
+      const isApp = token2.split(/\./).length === 3;
+      const isInstallation = REGEX_IS_INSTALLATION_LEGACY.test(token2) || REGEX_IS_INSTALLATION.test(token2);
+      const isUserToServer = REGEX_IS_USER_TO_SERVER.test(token2);
+      const tokenType = isApp ? 'app' : isInstallation ? 'installation' : isUserToServer ? 'user-to-server' : 'oauth';
       return {
         type: 'token',
         token: token2,
@@ -15437,7 +14526,7 @@ var require_dist_node8 = __commonJS({
       }
       return target;
     }
-    var VERSION = '3.5.1';
+    var VERSION = '3.6.0';
     var _excluded = ['authStrategy'];
     var Octokit = class {
       constructor(options = {}) {
@@ -15453,10 +14542,7 @@ var require_dist_node8 = __commonJS({
             format: ''
           }
         };
-        requestDefaults.headers['user-agent'] = [
-          options.userAgent,
-          `octokit-core.js/${VERSION} ${universalUserAgent.getUserAgent()}`
-        ]
+        requestDefaults.headers['user-agent'] = [options.userAgent, `octokit-core.js/${VERSION} ${universalUserAgent.getUserAgent()}`]
           .filter(Boolean)
           .join(' ');
         if (options.baseUrl) {
@@ -15540,11 +14626,7 @@ var require_dist_node8 = __commonJS({
         var _a;
         const currentPlugins = this.plugins;
         const NewOctokit =
-          ((_a = class extends this {}),
-          (_a.plugins = currentPlugins.concat(
-            newPlugins.filter(plugin => !currentPlugins.includes(plugin))
-          )),
-          _a);
+          ((_a = class extends this {}), (_a.plugins = currentPlugins.concat(newPlugins.filter(plugin => !currentPlugins.includes(plugin)))), _a);
         return NewOctokit;
       }
     };
@@ -15604,69 +14686,56 @@ var require_dist_node9 = __commonJS({
     }
     var Endpoints = {
       actions: {
-        addSelectedRepoToOrgSecret: [
-          'PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}'
-        ],
+        addCustomLabelsToSelfHostedRunnerForOrg: ['POST /orgs/{org}/actions/runners/{runner_id}/labels'],
+        addCustomLabelsToSelfHostedRunnerForRepo: ['POST /repos/{owner}/{repo}/actions/runners/{runner_id}/labels'],
+        addSelectedRepoToOrgSecret: ['PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}'],
         approveWorkflowRun: ['POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve'],
         cancelWorkflowRun: ['POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel'],
-        createOrUpdateEnvironmentSecret: [
-          'PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'
-        ],
+        createOrUpdateEnvironmentSecret: ['PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'],
         createOrUpdateOrgSecret: ['PUT /orgs/{org}/actions/secrets/{secret_name}'],
         createOrUpdateRepoSecret: ['PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}'],
         createRegistrationTokenForOrg: ['POST /orgs/{org}/actions/runners/registration-token'],
-        createRegistrationTokenForRepo: [
-          'POST /repos/{owner}/{repo}/actions/runners/registration-token'
-        ],
+        createRegistrationTokenForRepo: ['POST /repos/{owner}/{repo}/actions/runners/registration-token'],
         createRemoveTokenForOrg: ['POST /orgs/{org}/actions/runners/remove-token'],
         createRemoveTokenForRepo: ['POST /repos/{owner}/{repo}/actions/runners/remove-token'],
-        createWorkflowDispatch: [
-          'POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches'
-        ],
+        createWorkflowDispatch: ['POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches'],
+        deleteActionsCacheById: ['DELETE /repos/{owner}/{repo}/actions/caches/{cache_id}'],
+        deleteActionsCacheByKey: ['DELETE /repos/{owner}/{repo}/actions/caches{?key,ref}'],
         deleteArtifact: ['DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}'],
-        deleteEnvironmentSecret: [
-          'DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'
-        ],
+        deleteEnvironmentSecret: ['DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'],
         deleteOrgSecret: ['DELETE /orgs/{org}/actions/secrets/{secret_name}'],
         deleteRepoSecret: ['DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}'],
         deleteSelfHostedRunnerFromOrg: ['DELETE /orgs/{org}/actions/runners/{runner_id}'],
-        deleteSelfHostedRunnerFromRepo: [
-          'DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}'
-        ],
+        deleteSelfHostedRunnerFromRepo: ['DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}'],
         deleteWorkflowRun: ['DELETE /repos/{owner}/{repo}/actions/runs/{run_id}'],
         deleteWorkflowRunLogs: ['DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs'],
-        disableSelectedRepositoryGithubActionsOrganization: [
-          'DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}'
-        ],
+        disableSelectedRepositoryGithubActionsOrganization: ['DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}'],
         disableWorkflow: ['PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable'],
-        downloadArtifact: [
-          'GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}'
-        ],
+        downloadArtifact: ['GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}'],
         downloadJobLogsForWorkflowRun: ['GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs'],
+        downloadWorkflowRunAttemptLogs: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/logs'],
         downloadWorkflowRunLogs: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs'],
-        enableSelectedRepositoryGithubActionsOrganization: [
-          'PUT /orgs/{org}/actions/permissions/repositories/{repository_id}'
-        ],
+        enableSelectedRepositoryGithubActionsOrganization: ['PUT /orgs/{org}/actions/permissions/repositories/{repository_id}'],
         enableWorkflow: ['PUT /repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable'],
+        getActionsCacheList: ['GET /repos/{owner}/{repo}/actions/caches'],
+        getActionsCacheUsage: ['GET /repos/{owner}/{repo}/actions/cache/usage'],
+        getActionsCacheUsageByRepoForOrg: ['GET /orgs/{org}/actions/cache/usage-by-repository'],
+        getActionsCacheUsageForEnterprise: ['GET /enterprises/{enterprise}/actions/cache/usage'],
+        getActionsCacheUsageForOrg: ['GET /orgs/{org}/actions/cache/usage'],
         getAllowedActionsOrganization: ['GET /orgs/{org}/actions/permissions/selected-actions'],
-        getAllowedActionsRepository: [
-          'GET /repos/{owner}/{repo}/actions/permissions/selected-actions'
-        ],
+        getAllowedActionsRepository: ['GET /repos/{owner}/{repo}/actions/permissions/selected-actions'],
         getArtifact: ['GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}'],
-        getEnvironmentPublicKey: [
-          'GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key'
-        ],
-        getEnvironmentSecret: [
-          'GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'
-        ],
+        getEnvironmentPublicKey: ['GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key'],
+        getEnvironmentSecret: ['GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}'],
+        getGithubActionsDefaultWorkflowPermissionsEnterprise: ['GET /enterprises/{enterprise}/actions/permissions/workflow'],
+        getGithubActionsDefaultWorkflowPermissionsOrganization: ['GET /orgs/{org}/actions/permissions/workflow'],
+        getGithubActionsDefaultWorkflowPermissionsRepository: ['GET /repos/{owner}/{repo}/actions/permissions/workflow'],
         getGithubActionsPermissionsOrganization: ['GET /orgs/{org}/actions/permissions'],
         getGithubActionsPermissionsRepository: ['GET /repos/{owner}/{repo}/actions/permissions'],
         getJobForWorkflowRun: ['GET /repos/{owner}/{repo}/actions/jobs/{job_id}'],
         getOrgPublicKey: ['GET /orgs/{org}/actions/secrets/public-key'],
         getOrgSecret: ['GET /orgs/{org}/actions/secrets/{secret_name}'],
-        getPendingDeploymentsForRun: [
-          'GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments'
-        ],
+        getPendingDeploymentsForRun: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments'],
         getRepoPermissions: [
           'GET /repos/{owner}/{repo}/actions/permissions',
           {},
@@ -15680,49 +14749,50 @@ var require_dist_node9 = __commonJS({
         getSelfHostedRunnerForOrg: ['GET /orgs/{org}/actions/runners/{runner_id}'],
         getSelfHostedRunnerForRepo: ['GET /repos/{owner}/{repo}/actions/runners/{runner_id}'],
         getWorkflow: ['GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}'],
+        getWorkflowAccessToRepository: ['GET /repos/{owner}/{repo}/actions/permissions/access'],
         getWorkflowRun: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}'],
+        getWorkflowRunAttempt: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}'],
         getWorkflowRunUsage: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing'],
         getWorkflowUsage: ['GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing'],
         listArtifactsForRepo: ['GET /repos/{owner}/{repo}/actions/artifacts'],
-        listEnvironmentSecrets: [
-          'GET /repositories/{repository_id}/environments/{environment_name}/secrets'
-        ],
+        listEnvironmentSecrets: ['GET /repositories/{repository_id}/environments/{environment_name}/secrets'],
         listJobsForWorkflowRun: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs'],
+        listJobsForWorkflowRunAttempt: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs'],
+        listLabelsForSelfHostedRunnerForOrg: ['GET /orgs/{org}/actions/runners/{runner_id}/labels'],
+        listLabelsForSelfHostedRunnerForRepo: ['GET /repos/{owner}/{repo}/actions/runners/{runner_id}/labels'],
         listOrgSecrets: ['GET /orgs/{org}/actions/secrets'],
         listRepoSecrets: ['GET /repos/{owner}/{repo}/actions/secrets'],
         listRepoWorkflows: ['GET /repos/{owner}/{repo}/actions/workflows'],
         listRunnerApplicationsForOrg: ['GET /orgs/{org}/actions/runners/downloads'],
         listRunnerApplicationsForRepo: ['GET /repos/{owner}/{repo}/actions/runners/downloads'],
-        listSelectedReposForOrgSecret: [
-          'GET /orgs/{org}/actions/secrets/{secret_name}/repositories'
-        ],
-        listSelectedRepositoriesEnabledGithubActionsOrganization: [
-          'GET /orgs/{org}/actions/permissions/repositories'
-        ],
+        listSelectedReposForOrgSecret: ['GET /orgs/{org}/actions/secrets/{secret_name}/repositories'],
+        listSelectedRepositoriesEnabledGithubActionsOrganization: ['GET /orgs/{org}/actions/permissions/repositories'],
         listSelfHostedRunnersForOrg: ['GET /orgs/{org}/actions/runners'],
         listSelfHostedRunnersForRepo: ['GET /repos/{owner}/{repo}/actions/runners'],
         listWorkflowRunArtifacts: ['GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts'],
         listWorkflowRuns: ['GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs'],
         listWorkflowRunsForRepo: ['GET /repos/{owner}/{repo}/actions/runs'],
+        reRunJobForWorkflowRun: ['POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun'],
         reRunWorkflow: ['POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun'],
-        removeSelectedRepoFromOrgSecret: [
-          'DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}'
-        ],
-        reviewPendingDeploymentsForRun: [
-          'POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments'
-        ],
+        reRunWorkflowFailedJobs: ['POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs'],
+        removeAllCustomLabelsFromSelfHostedRunnerForOrg: ['DELETE /orgs/{org}/actions/runners/{runner_id}/labels'],
+        removeAllCustomLabelsFromSelfHostedRunnerForRepo: ['DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels'],
+        removeCustomLabelFromSelfHostedRunnerForOrg: ['DELETE /orgs/{org}/actions/runners/{runner_id}/labels/{name}'],
+        removeCustomLabelFromSelfHostedRunnerForRepo: ['DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}/labels/{name}'],
+        removeSelectedRepoFromOrgSecret: ['DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}'],
+        reviewPendingDeploymentsForRun: ['POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments'],
         setAllowedActionsOrganization: ['PUT /orgs/{org}/actions/permissions/selected-actions'],
-        setAllowedActionsRepository: [
-          'PUT /repos/{owner}/{repo}/actions/permissions/selected-actions'
-        ],
+        setAllowedActionsRepository: ['PUT /repos/{owner}/{repo}/actions/permissions/selected-actions'],
+        setCustomLabelsForSelfHostedRunnerForOrg: ['PUT /orgs/{org}/actions/runners/{runner_id}/labels'],
+        setCustomLabelsForSelfHostedRunnerForRepo: ['PUT /repos/{owner}/{repo}/actions/runners/{runner_id}/labels'],
+        setGithubActionsDefaultWorkflowPermissionsEnterprise: ['PUT /enterprises/{enterprise}/actions/permissions/workflow'],
+        setGithubActionsDefaultWorkflowPermissionsOrganization: ['PUT /orgs/{org}/actions/permissions/workflow'],
+        setGithubActionsDefaultWorkflowPermissionsRepository: ['PUT /repos/{owner}/{repo}/actions/permissions/workflow'],
         setGithubActionsPermissionsOrganization: ['PUT /orgs/{org}/actions/permissions'],
         setGithubActionsPermissionsRepository: ['PUT /repos/{owner}/{repo}/actions/permissions'],
-        setSelectedReposForOrgSecret: [
-          'PUT /orgs/{org}/actions/secrets/{secret_name}/repositories'
-        ],
-        setSelectedRepositoriesEnabledGithubActionsOrganization: [
-          'PUT /orgs/{org}/actions/permissions/repositories'
-        ]
+        setSelectedReposForOrgSecret: ['PUT /orgs/{org}/actions/secrets/{secret_name}/repositories'],
+        setSelectedRepositoriesEnabledGithubActionsOrganization: ['PUT /orgs/{org}/actions/permissions/repositories'],
+        setWorkflowAccessToRepository: ['PUT /repos/{owner}/{repo}/actions/permissions/access']
       },
       activity: {
         checkRepoIsStarredByAuthenticatedUser: ['GET /user/starred/{owner}/{repo}'],
@@ -15731,9 +14801,7 @@ var require_dist_node9 = __commonJS({
         getFeeds: ['GET /feeds'],
         getRepoSubscription: ['GET /repos/{owner}/{repo}/subscription'],
         getThread: ['GET /notifications/threads/{thread_id}'],
-        getThreadSubscriptionForAuthenticatedUser: [
-          'GET /notifications/threads/{thread_id}/subscription'
-        ],
+        getThreadSubscriptionForAuthenticatedUser: ['GET /notifications/threads/{thread_id}/subscription'],
         listEventsForAuthenticatedUser: ['GET /users/{username}/events'],
         listNotificationsForAuthenticatedUser: ['GET /notifications'],
         listOrgEventsForAuthenticatedUser: ['GET /users/{username}/events/orgs/{org}'],
@@ -15761,25 +14829,14 @@ var require_dist_node9 = __commonJS({
       },
       apps: {
         addRepoToInstallation: [
-          'PUT /user/installations/{installation_id}/repositories/{repository_id}'
+          'PUT /user/installations/{installation_id}/repositories/{repository_id}',
+          {},
+          {
+            renamed: ['apps', 'addRepoToInstallationForAuthenticatedUser']
+          }
         ],
+        addRepoToInstallationForAuthenticatedUser: ['PUT /user/installations/{installation_id}/repositories/{repository_id}'],
         checkToken: ['POST /applications/{client_id}/token'],
-        createContentAttachment: [
-          'POST /content_references/{content_reference_id}/attachments',
-          {
-            mediaType: {
-              previews: ['corsair']
-            }
-          }
-        ],
-        createContentAttachmentForRepo: [
-          'POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments',
-          {
-            mediaType: {
-              previews: ['corsair']
-            }
-          }
-        ],
         createFromManifest: ['POST /app-manifests/{code}/conversions'],
         createInstallationAccessToken: ['POST /app/installations/{installation_id}/access_tokens'],
         deleteAuthorization: ['DELETE /applications/{client_id}/grant'],
@@ -15791,17 +14848,13 @@ var require_dist_node9 = __commonJS({
         getOrgInstallation: ['GET /orgs/{org}/installation'],
         getRepoInstallation: ['GET /repos/{owner}/{repo}/installation'],
         getSubscriptionPlanForAccount: ['GET /marketplace_listing/accounts/{account_id}'],
-        getSubscriptionPlanForAccountStubbed: [
-          'GET /marketplace_listing/stubbed/accounts/{account_id}'
-        ],
+        getSubscriptionPlanForAccountStubbed: ['GET /marketplace_listing/stubbed/accounts/{account_id}'],
         getUserInstallation: ['GET /users/{username}/installation'],
         getWebhookConfigForApp: ['GET /app/hook/config'],
         getWebhookDelivery: ['GET /app/hook/deliveries/{delivery_id}'],
         listAccountsForPlan: ['GET /marketplace_listing/plans/{plan_id}/accounts'],
         listAccountsForPlanStubbed: ['GET /marketplace_listing/stubbed/plans/{plan_id}/accounts'],
-        listInstallationReposForAuthenticatedUser: [
-          'GET /user/installations/{installation_id}/repositories'
-        ],
+        listInstallationReposForAuthenticatedUser: ['GET /user/installations/{installation_id}/repositories'],
         listInstallations: ['GET /app/installations'],
         listInstallationsForAuthenticatedUser: ['GET /user/installations'],
         listPlans: ['GET /marketplace_listing/plans'],
@@ -15812,8 +14865,13 @@ var require_dist_node9 = __commonJS({
         listWebhookDeliveries: ['GET /app/hook/deliveries'],
         redeliverWebhookDelivery: ['POST /app/hook/deliveries/{delivery_id}/attempts'],
         removeRepoFromInstallation: [
-          'DELETE /user/installations/{installation_id}/repositories/{repository_id}'
+          'DELETE /user/installations/{installation_id}/repositories/{repository_id}',
+          {},
+          {
+            renamed: ['apps', 'removeRepoFromInstallationForAuthenticatedUser']
+          }
         ],
+        removeRepoFromInstallationForAuthenticatedUser: ['DELETE /user/installations/{installation_id}/repositories/{repository_id}'],
         resetToken: ['PATCH /applications/{client_id}/token'],
         revokeInstallationAccessToken: ['DELETE /installation/token'],
         scopeToken: ['POST /applications/{client_id}/token/scoped'],
@@ -15824,6 +14882,8 @@ var require_dist_node9 = __commonJS({
       billing: {
         getGithubActionsBillingOrg: ['GET /orgs/{org}/settings/billing/actions'],
         getGithubActionsBillingUser: ['GET /users/{username}/settings/billing/actions'],
+        getGithubAdvancedSecurityBillingGhe: ['GET /enterprises/{enterprise}/settings/billing/advanced-security'],
+        getGithubAdvancedSecurityBillingOrg: ['GET /orgs/{org}/settings/billing/advanced-security'],
         getGithubPackagesBillingOrg: ['GET /orgs/{org}/settings/billing/packages'],
         getGithubPackagesBillingUser: ['GET /users/{username}/settings/billing/packages'],
         getSharedStorageBillingOrg: ['GET /orgs/{org}/settings/billing/shared-storage'],
@@ -15838,14 +14898,13 @@ var require_dist_node9 = __commonJS({
         listForRef: ['GET /repos/{owner}/{repo}/commits/{ref}/check-runs'],
         listForSuite: ['GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs'],
         listSuitesForRef: ['GET /repos/{owner}/{repo}/commits/{ref}/check-suites'],
+        rerequestRun: ['POST /repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest'],
         rerequestSuite: ['POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest'],
         setSuitesPreferences: ['PATCH /repos/{owner}/{repo}/check-suites/preferences'],
         update: ['PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}']
       },
       codeScanning: {
-        deleteAnalysis: [
-          'DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}{?confirm_delete}'
-        ],
+        deleteAnalysis: ['DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}{?confirm_delete}'],
         getAlert: [
           'GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}',
           {},
@@ -15857,9 +14916,8 @@ var require_dist_node9 = __commonJS({
         ],
         getAnalysis: ['GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}'],
         getSarif: ['GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}'],
-        listAlertInstances: [
-          'GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances'
-        ],
+        listAlertInstances: ['GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances'],
+        listAlertsForOrg: ['GET /orgs/{org}/code-scanning/alerts'],
         listAlertsForRepo: ['GET /repos/{owner}/{repo}/code-scanning/alerts'],
         listAlertsInstances: [
           'GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances',
@@ -15874,44 +14932,88 @@ var require_dist_node9 = __commonJS({
       },
       codesOfConduct: {
         getAllCodesOfConduct: ['GET /codes_of_conduct'],
-        getConductCode: ['GET /codes_of_conduct/{key}'],
-        getForRepo: [
-          'GET /repos/{owner}/{repo}/community/code_of_conduct',
+        getConductCode: ['GET /codes_of_conduct/{key}']
+      },
+      codespaces: {
+        addRepositoryForSecretForAuthenticatedUser: ['PUT /user/codespaces/secrets/{secret_name}/repositories/{repository_id}'],
+        codespaceMachinesForAuthenticatedUser: ['GET /user/codespaces/{codespace_name}/machines'],
+        createForAuthenticatedUser: ['POST /user/codespaces'],
+        createOrUpdateRepoSecret: ['PUT /repos/{owner}/{repo}/codespaces/secrets/{secret_name}'],
+        createOrUpdateSecretForAuthenticatedUser: ['PUT /user/codespaces/secrets/{secret_name}'],
+        createWithPrForAuthenticatedUser: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/codespaces'],
+        createWithRepoForAuthenticatedUser: ['POST /repos/{owner}/{repo}/codespaces'],
+        deleteForAuthenticatedUser: ['DELETE /user/codespaces/{codespace_name}'],
+        deleteFromOrganization: ['DELETE /orgs/{org}/members/{username}/codespaces/{codespace_name}'],
+        deleteRepoSecret: ['DELETE /repos/{owner}/{repo}/codespaces/secrets/{secret_name}'],
+        deleteSecretForAuthenticatedUser: ['DELETE /user/codespaces/secrets/{secret_name}'],
+        exportForAuthenticatedUser: ['POST /user/codespaces/{codespace_name}/exports'],
+        getExportDetailsForAuthenticatedUser: ['GET /user/codespaces/{codespace_name}/exports/{export_id}'],
+        getForAuthenticatedUser: ['GET /user/codespaces/{codespace_name}'],
+        getPublicKeyForAuthenticatedUser: ['GET /user/codespaces/secrets/public-key'],
+        getRepoPublicKey: ['GET /repos/{owner}/{repo}/codespaces/secrets/public-key'],
+        getRepoSecret: ['GET /repos/{owner}/{repo}/codespaces/secrets/{secret_name}'],
+        getSecretForAuthenticatedUser: ['GET /user/codespaces/secrets/{secret_name}'],
+        listDevcontainersInRepositoryForAuthenticatedUser: ['GET /repos/{owner}/{repo}/codespaces/devcontainers'],
+        listForAuthenticatedUser: ['GET /user/codespaces'],
+        listInOrganization: [
+          'GET /orgs/{org}/codespaces',
+          {},
           {
-            mediaType: {
-              previews: ['scarlet-witch']
+            renamedParameters: {
+              org_id: 'org'
             }
           }
-        ]
+        ],
+        listInRepositoryForAuthenticatedUser: ['GET /repos/{owner}/{repo}/codespaces'],
+        listRepoSecrets: ['GET /repos/{owner}/{repo}/codespaces/secrets'],
+        listRepositoriesForSecretForAuthenticatedUser: ['GET /user/codespaces/secrets/{secret_name}/repositories'],
+        listSecretsForAuthenticatedUser: ['GET /user/codespaces/secrets'],
+        removeRepositoryForSecretForAuthenticatedUser: ['DELETE /user/codespaces/secrets/{secret_name}/repositories/{repository_id}'],
+        repoMachinesForAuthenticatedUser: ['GET /repos/{owner}/{repo}/codespaces/machines'],
+        setRepositoriesForSecretForAuthenticatedUser: ['PUT /user/codespaces/secrets/{secret_name}/repositories'],
+        startForAuthenticatedUser: ['POST /user/codespaces/{codespace_name}/start'],
+        stopForAuthenticatedUser: ['POST /user/codespaces/{codespace_name}/stop'],
+        stopInOrganization: ['POST /orgs/{org}/members/{username}/codespaces/{codespace_name}/stop'],
+        updateForAuthenticatedUser: ['PATCH /user/codespaces/{codespace_name}']
+      },
+      dependabot: {
+        addSelectedRepoToOrgSecret: ['PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}'],
+        createOrUpdateOrgSecret: ['PUT /orgs/{org}/dependabot/secrets/{secret_name}'],
+        createOrUpdateRepoSecret: ['PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}'],
+        deleteOrgSecret: ['DELETE /orgs/{org}/dependabot/secrets/{secret_name}'],
+        deleteRepoSecret: ['DELETE /repos/{owner}/{repo}/dependabot/secrets/{secret_name}'],
+        getOrgPublicKey: ['GET /orgs/{org}/dependabot/secrets/public-key'],
+        getOrgSecret: ['GET /orgs/{org}/dependabot/secrets/{secret_name}'],
+        getRepoPublicKey: ['GET /repos/{owner}/{repo}/dependabot/secrets/public-key'],
+        getRepoSecret: ['GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}'],
+        listOrgSecrets: ['GET /orgs/{org}/dependabot/secrets'],
+        listRepoSecrets: ['GET /repos/{owner}/{repo}/dependabot/secrets'],
+        listSelectedReposForOrgSecret: ['GET /orgs/{org}/dependabot/secrets/{secret_name}/repositories'],
+        removeSelectedRepoFromOrgSecret: ['DELETE /orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}'],
+        setSelectedReposForOrgSecret: ['PUT /orgs/{org}/dependabot/secrets/{secret_name}/repositories']
+      },
+      dependencyGraph: {
+        createRepositorySnapshot: ['POST /repos/{owner}/{repo}/dependency-graph/snapshots'],
+        diffRange: ['GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}']
       },
       emojis: {
         get: ['GET /emojis']
       },
       enterpriseAdmin: {
-        disableSelectedOrganizationGithubActionsEnterprise: [
-          'DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}'
-        ],
-        enableSelectedOrganizationGithubActionsEnterprise: [
-          'PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}'
-        ],
-        getAllowedActionsEnterprise: [
-          'GET /enterprises/{enterprise}/actions/permissions/selected-actions'
-        ],
-        getGithubActionsPermissionsEnterprise: [
-          'GET /enterprises/{enterprise}/actions/permissions'
-        ],
-        listSelectedOrganizationsEnabledGithubActionsEnterprise: [
-          'GET /enterprises/{enterprise}/actions/permissions/organizations'
-        ],
-        setAllowedActionsEnterprise: [
-          'PUT /enterprises/{enterprise}/actions/permissions/selected-actions'
-        ],
-        setGithubActionsPermissionsEnterprise: [
-          'PUT /enterprises/{enterprise}/actions/permissions'
-        ],
-        setSelectedOrganizationsEnabledGithubActionsEnterprise: [
-          'PUT /enterprises/{enterprise}/actions/permissions/organizations'
-        ]
+        addCustomLabelsToSelfHostedRunnerForEnterprise: ['POST /enterprises/{enterprise}/actions/runners/{runner_id}/labels'],
+        disableSelectedOrganizationGithubActionsEnterprise: ['DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}'],
+        enableSelectedOrganizationGithubActionsEnterprise: ['PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}'],
+        getAllowedActionsEnterprise: ['GET /enterprises/{enterprise}/actions/permissions/selected-actions'],
+        getGithubActionsPermissionsEnterprise: ['GET /enterprises/{enterprise}/actions/permissions'],
+        getServerStatistics: ['GET /enterprise-installation/{enterprise_or_org}/server-statistics'],
+        listLabelsForSelfHostedRunnerForEnterprise: ['GET /enterprises/{enterprise}/actions/runners/{runner_id}/labels'],
+        listSelectedOrganizationsEnabledGithubActionsEnterprise: ['GET /enterprises/{enterprise}/actions/permissions/organizations'],
+        removeAllCustomLabelsFromSelfHostedRunnerForEnterprise: ['DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels'],
+        removeCustomLabelFromSelfHostedRunnerForEnterprise: ['DELETE /enterprises/{enterprise}/actions/runners/{runner_id}/labels/{name}'],
+        setAllowedActionsEnterprise: ['PUT /enterprises/{enterprise}/actions/permissions/selected-actions'],
+        setCustomLabelsForSelfHostedRunnerForEnterprise: ['PUT /enterprises/{enterprise}/actions/runners/{runner_id}/labels'],
+        setGithubActionsPermissionsEnterprise: ['PUT /enterprises/{enterprise}/actions/permissions'],
+        setSelectedOrganizationsEnabledGithubActionsEnterprise: ['PUT /enterprises/{enterprise}/actions/permissions/organizations']
       },
       gists: {
         checkIsStarred: ['GET /gists/{gist_id}/star'],
@@ -16008,14 +15110,7 @@ var require_dist_node9 = __commonJS({
         listCommentsForRepo: ['GET /repos/{owner}/{repo}/issues/comments'],
         listEvents: ['GET /repos/{owner}/{repo}/issues/{issue_number}/events'],
         listEventsForRepo: ['GET /repos/{owner}/{repo}/issues/events'],
-        listEventsForTimeline: [
-          'GET /repos/{owner}/{repo}/issues/{issue_number}/timeline',
-          {
-            mediaType: {
-              previews: ['mockingbird']
-            }
-          }
-        ],
+        listEventsForTimeline: ['GET /repos/{owner}/{repo}/issues/{issue_number}/timeline'],
         listForAuthenticatedUser: ['GET /user/issues'],
         listForOrg: ['GET /orgs/{org}/issues'],
         listForRepo: ['GET /repos/{owner}/{repo}/issues'],
@@ -16058,87 +15153,24 @@ var require_dist_node9 = __commonJS({
       },
       migrations: {
         cancelImport: ['DELETE /repos/{owner}/{repo}/import'],
-        deleteArchiveForAuthenticatedUser: [
-          'DELETE /user/migrations/{migration_id}/archive',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        deleteArchiveForOrg: [
-          'DELETE /orgs/{org}/migrations/{migration_id}/archive',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        downloadArchiveForOrg: [
-          'GET /orgs/{org}/migrations/{migration_id}/archive',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        getArchiveForAuthenticatedUser: [
-          'GET /user/migrations/{migration_id}/archive',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
+        deleteArchiveForAuthenticatedUser: ['DELETE /user/migrations/{migration_id}/archive'],
+        deleteArchiveForOrg: ['DELETE /orgs/{org}/migrations/{migration_id}/archive'],
+        downloadArchiveForOrg: ['GET /orgs/{org}/migrations/{migration_id}/archive'],
+        getArchiveForAuthenticatedUser: ['GET /user/migrations/{migration_id}/archive'],
         getCommitAuthors: ['GET /repos/{owner}/{repo}/import/authors'],
         getImportStatus: ['GET /repos/{owner}/{repo}/import'],
         getLargeFiles: ['GET /repos/{owner}/{repo}/import/large_files'],
-        getStatusForAuthenticatedUser: [
-          'GET /user/migrations/{migration_id}',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        getStatusForOrg: [
-          'GET /orgs/{org}/migrations/{migration_id}',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        listForAuthenticatedUser: [
-          'GET /user/migrations',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        listForOrg: [
-          'GET /orgs/{org}/migrations',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        listReposForOrg: [
-          'GET /orgs/{org}/migrations/{migration_id}/repositories',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
+        getStatusForAuthenticatedUser: ['GET /user/migrations/{migration_id}'],
+        getStatusForOrg: ['GET /orgs/{org}/migrations/{migration_id}'],
+        listForAuthenticatedUser: ['GET /user/migrations'],
+        listForOrg: ['GET /orgs/{org}/migrations'],
+        listReposForAuthenticatedUser: ['GET /user/migrations/{migration_id}/repositories'],
+        listReposForOrg: ['GET /orgs/{org}/migrations/{migration_id}/repositories'],
         listReposForUser: [
           'GET /user/migrations/{migration_id}/repositories',
+          {},
           {
-            mediaType: {
-              previews: ['wyandotte']
-            }
+            renamed: ['migrations', 'listReposForAuthenticatedUser']
           }
         ],
         mapCommitAuthor: ['PATCH /repos/{owner}/{repo}/import/authors/{author_id}'],
@@ -16146,22 +15178,8 @@ var require_dist_node9 = __commonJS({
         startForAuthenticatedUser: ['POST /user/migrations'],
         startForOrg: ['POST /orgs/{org}/migrations'],
         startImport: ['PUT /repos/{owner}/{repo}/import'],
-        unlockRepoForAuthenticatedUser: [
-          'DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
-        unlockRepoForOrg: [
-          'DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock',
-          {
-            mediaType: {
-              previews: ['wyandotte']
-            }
-          }
-        ],
+        unlockRepoForAuthenticatedUser: ['DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock'],
+        unlockRepoForOrg: ['DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock'],
         updateImport: ['PATCH /repos/{owner}/{repo}/import']
       },
       orgs: {
@@ -16183,6 +15201,7 @@ var require_dist_node9 = __commonJS({
         list: ['GET /organizations'],
         listAppInstallations: ['GET /orgs/{org}/installations'],
         listBlockedUsers: ['GET /orgs/{org}/blocks'],
+        listCustomRoles: ['GET /organizations/{organization_id}/custom_roles'],
         listFailedInvitations: ['GET /orgs/{org}/failed_invitations'],
         listForAuthenticatedUser: ['GET /user/orgs'],
         listForUser: ['GET /users/{username}/orgs'],
@@ -16195,15 +15214,11 @@ var require_dist_node9 = __commonJS({
         listWebhookDeliveries: ['GET /orgs/{org}/hooks/{hook_id}/deliveries'],
         listWebhooks: ['GET /orgs/{org}/hooks'],
         pingWebhook: ['POST /orgs/{org}/hooks/{hook_id}/pings'],
-        redeliverWebhookDelivery: [
-          'POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts'
-        ],
+        redeliverWebhookDelivery: ['POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts'],
         removeMember: ['DELETE /orgs/{org}/members/{username}'],
         removeMembershipForUser: ['DELETE /orgs/{org}/memberships/{username}'],
         removeOutsideCollaborator: ['DELETE /orgs/{org}/outside_collaborators/{username}'],
-        removePublicMembershipForAuthenticatedUser: [
-          'DELETE /orgs/{org}/public_members/{username}'
-        ],
+        removePublicMembershipForAuthenticatedUser: ['DELETE /orgs/{org}/public_members/{username}'],
         setMembershipForUser: ['PUT /orgs/{org}/memberships/{username}'],
         setPublicMembershipForAuthenticatedUser: ['PUT /orgs/{org}/public_members/{username}'],
         unblockUser: ['DELETE /orgs/{org}/blocks/{username}'],
@@ -16216,15 +15231,9 @@ var require_dist_node9 = __commonJS({
         deletePackageForAuthenticatedUser: ['DELETE /user/packages/{package_type}/{package_name}'],
         deletePackageForOrg: ['DELETE /orgs/{org}/packages/{package_type}/{package_name}'],
         deletePackageForUser: ['DELETE /users/{username}/packages/{package_type}/{package_name}'],
-        deletePackageVersionForAuthenticatedUser: [
-          'DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
-        deletePackageVersionForOrg: [
-          'DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
-        deletePackageVersionForUser: [
-          'DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
+        deletePackageVersionForAuthenticatedUser: ['DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}'],
+        deletePackageVersionForOrg: ['DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}'],
+        deletePackageVersionForUser: ['DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}'],
         getAllPackageVersionsForAPackageOwnedByAnOrg: [
           'GET /orgs/{org}/packages/{package_type}/{package_name}/versions',
           {},
@@ -16239,296 +15248,78 @@ var require_dist_node9 = __commonJS({
             renamed: ['packages', 'getAllPackageVersionsForPackageOwnedByAuthenticatedUser']
           }
         ],
-        getAllPackageVersionsForPackageOwnedByAuthenticatedUser: [
-          'GET /user/packages/{package_type}/{package_name}/versions'
-        ],
-        getAllPackageVersionsForPackageOwnedByOrg: [
-          'GET /orgs/{org}/packages/{package_type}/{package_name}/versions'
-        ],
-        getAllPackageVersionsForPackageOwnedByUser: [
-          'GET /users/{username}/packages/{package_type}/{package_name}/versions'
-        ],
+        getAllPackageVersionsForPackageOwnedByAuthenticatedUser: ['GET /user/packages/{package_type}/{package_name}/versions'],
+        getAllPackageVersionsForPackageOwnedByOrg: ['GET /orgs/{org}/packages/{package_type}/{package_name}/versions'],
+        getAllPackageVersionsForPackageOwnedByUser: ['GET /users/{username}/packages/{package_type}/{package_name}/versions'],
         getPackageForAuthenticatedUser: ['GET /user/packages/{package_type}/{package_name}'],
         getPackageForOrganization: ['GET /orgs/{org}/packages/{package_type}/{package_name}'],
         getPackageForUser: ['GET /users/{username}/packages/{package_type}/{package_name}'],
-        getPackageVersionForAuthenticatedUser: [
-          'GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
-        getPackageVersionForOrganization: [
-          'GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
-        getPackageVersionForUser: [
-          'GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}'
-        ],
+        getPackageVersionForAuthenticatedUser: ['GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}'],
+        getPackageVersionForOrganization: ['GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}'],
+        getPackageVersionForUser: ['GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}'],
         listPackagesForAuthenticatedUser: ['GET /user/packages'],
         listPackagesForOrganization: ['GET /orgs/{org}/packages'],
-        listPackagesForUser: ['GET /user/{username}/packages'],
-        restorePackageForAuthenticatedUser: [
-          'POST /user/packages/{package_type}/{package_name}/restore{?token}'
-        ],
-        restorePackageForOrg: [
-          'POST /orgs/{org}/packages/{package_type}/{package_name}/restore{?token}'
-        ],
-        restorePackageForUser: [
-          'POST /users/{username}/packages/{package_type}/{package_name}/restore{?token}'
-        ],
-        restorePackageVersionForAuthenticatedUser: [
-          'POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore'
-        ],
-        restorePackageVersionForOrg: [
-          'POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore'
-        ],
-        restorePackageVersionForUser: [
-          'POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore'
-        ]
+        listPackagesForUser: ['GET /users/{username}/packages'],
+        restorePackageForAuthenticatedUser: ['POST /user/packages/{package_type}/{package_name}/restore{?token}'],
+        restorePackageForOrg: ['POST /orgs/{org}/packages/{package_type}/{package_name}/restore{?token}'],
+        restorePackageForUser: ['POST /users/{username}/packages/{package_type}/{package_name}/restore{?token}'],
+        restorePackageVersionForAuthenticatedUser: ['POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore'],
+        restorePackageVersionForOrg: ['POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore'],
+        restorePackageVersionForUser: ['POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore']
       },
       projects: {
-        addCollaborator: [
-          'PUT /projects/{project_id}/collaborators/{username}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        createCard: [
-          'POST /projects/columns/{column_id}/cards',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        createColumn: [
-          'POST /projects/{project_id}/columns',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        createForAuthenticatedUser: [
-          'POST /user/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        createForOrg: [
-          'POST /orgs/{org}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        createForRepo: [
-          'POST /repos/{owner}/{repo}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        delete: [
-          'DELETE /projects/{project_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        deleteCard: [
-          'DELETE /projects/columns/cards/{card_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        deleteColumn: [
-          'DELETE /projects/columns/{column_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        get: [
-          'GET /projects/{project_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        getCard: [
-          'GET /projects/columns/cards/{card_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        getColumn: [
-          'GET /projects/columns/{column_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        getPermissionForUser: [
-          'GET /projects/{project_id}/collaborators/{username}/permission',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listCards: [
-          'GET /projects/columns/{column_id}/cards',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listCollaborators: [
-          'GET /projects/{project_id}/collaborators',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listColumns: [
-          'GET /projects/{project_id}/columns',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listForOrg: [
-          'GET /orgs/{org}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listForRepo: [
-          'GET /repos/{owner}/{repo}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        listForUser: [
-          'GET /users/{username}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        moveCard: [
-          'POST /projects/columns/cards/{card_id}/moves',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        moveColumn: [
-          'POST /projects/columns/{column_id}/moves',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        removeCollaborator: [
-          'DELETE /projects/{project_id}/collaborators/{username}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        update: [
-          'PATCH /projects/{project_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        updateCard: [
-          'PATCH /projects/columns/cards/{card_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
-        updateColumn: [
-          'PATCH /projects/columns/{column_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ]
+        addCollaborator: ['PUT /projects/{project_id}/collaborators/{username}'],
+        createCard: ['POST /projects/columns/{column_id}/cards'],
+        createColumn: ['POST /projects/{project_id}/columns'],
+        createForAuthenticatedUser: ['POST /user/projects'],
+        createForOrg: ['POST /orgs/{org}/projects'],
+        createForRepo: ['POST /repos/{owner}/{repo}/projects'],
+        delete: ['DELETE /projects/{project_id}'],
+        deleteCard: ['DELETE /projects/columns/cards/{card_id}'],
+        deleteColumn: ['DELETE /projects/columns/{column_id}'],
+        get: ['GET /projects/{project_id}'],
+        getCard: ['GET /projects/columns/cards/{card_id}'],
+        getColumn: ['GET /projects/columns/{column_id}'],
+        getPermissionForUser: ['GET /projects/{project_id}/collaborators/{username}/permission'],
+        listCards: ['GET /projects/columns/{column_id}/cards'],
+        listCollaborators: ['GET /projects/{project_id}/collaborators'],
+        listColumns: ['GET /projects/{project_id}/columns'],
+        listForOrg: ['GET /orgs/{org}/projects'],
+        listForRepo: ['GET /repos/{owner}/{repo}/projects'],
+        listForUser: ['GET /users/{username}/projects'],
+        moveCard: ['POST /projects/columns/cards/{card_id}/moves'],
+        moveColumn: ['POST /projects/columns/{column_id}/moves'],
+        removeCollaborator: ['DELETE /projects/{project_id}/collaborators/{username}'],
+        update: ['PATCH /projects/{project_id}'],
+        updateCard: ['PATCH /projects/columns/cards/{card_id}'],
+        updateColumn: ['PATCH /projects/columns/{column_id}']
       },
       pulls: {
         checkIfMerged: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/merge'],
         create: ['POST /repos/{owner}/{repo}/pulls'],
-        createReplyForReviewComment: [
-          'POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies'
-        ],
+        createReplyForReviewComment: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies'],
         createReview: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews'],
         createReviewComment: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/comments'],
-        deletePendingReview: [
-          'DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}'
-        ],
+        deletePendingReview: ['DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}'],
         deleteReviewComment: ['DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}'],
-        dismissReview: [
-          'PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals'
-        ],
+        dismissReview: ['PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals'],
         get: ['GET /repos/{owner}/{repo}/pulls/{pull_number}'],
         getReview: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}'],
         getReviewComment: ['GET /repos/{owner}/{repo}/pulls/comments/{comment_id}'],
         list: ['GET /repos/{owner}/{repo}/pulls'],
-        listCommentsForReview: [
-          'GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments'
-        ],
+        listCommentsForReview: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments'],
         listCommits: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/commits'],
         listFiles: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/files'],
-        listRequestedReviewers: [
-          'GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers'
-        ],
+        listRequestedReviewers: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers'],
         listReviewComments: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/comments'],
         listReviewCommentsForRepo: ['GET /repos/{owner}/{repo}/pulls/comments'],
         listReviews: ['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews'],
         merge: ['PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge'],
-        removeRequestedReviewers: [
-          'DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers'
-        ],
+        removeRequestedReviewers: ['DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers'],
         requestReviewers: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers'],
         submitReview: ['POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events'],
         update: ['PATCH /repos/{owner}/{repo}/pulls/{pull_number}'],
-        updateBranch: [
-          'PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch',
-          {
-            mediaType: {
-              previews: ['lydian']
-            }
-          }
-        ],
+        updateBranch: ['PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch'],
         updateReview: ['PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}'],
         updateReviewComment: ['PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}']
       },
@@ -16536,173 +15327,41 @@ var require_dist_node9 = __commonJS({
         get: ['GET /rate_limit']
       },
       reactions: {
-        createForCommitComment: [
-          'POST /repos/{owner}/{repo}/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        createForIssue: [
-          'POST /repos/{owner}/{repo}/issues/{issue_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        createForIssueComment: [
-          'POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        createForPullRequestReviewComment: [
-          'POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        createForRelease: [
-          'POST /repos/{owner}/{repo}/releases/{release_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
+        createForCommitComment: ['POST /repos/{owner}/{repo}/comments/{comment_id}/reactions'],
+        createForIssue: ['POST /repos/{owner}/{repo}/issues/{issue_number}/reactions'],
+        createForIssueComment: ['POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions'],
+        createForPullRequestReviewComment: ['POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions'],
+        createForRelease: ['POST /repos/{owner}/{repo}/releases/{release_id}/reactions'],
         createForTeamDiscussionCommentInOrg: [
-          'POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
+          'POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions'
         ],
-        createForTeamDiscussionInOrg: [
-          'POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        deleteForCommitComment: [
-          'DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        deleteForIssue: [
-          'DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        deleteForIssueComment: [
-          'DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        deleteForPullRequestComment: [
-          'DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        deleteForTeamDiscussion: [
-          'DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
+        createForTeamDiscussionInOrg: ['POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions'],
+        deleteForCommitComment: ['DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}'],
+        deleteForIssue: ['DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}'],
+        deleteForIssueComment: ['DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}'],
+        deleteForPullRequestComment: ['DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}'],
+        deleteForRelease: ['DELETE /repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}'],
+        deleteForTeamDiscussion: ['DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}'],
         deleteForTeamDiscussionComment: [
-          'DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
+          'DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}'
         ],
-        deleteLegacy: [
-          'DELETE /reactions/{reaction_id}',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          },
-          {
-            deprecated:
-              'octokit.rest.reactions.deleteLegacy() is deprecated, see https://docs.github.com/rest/reference/reactions/#delete-a-reaction-legacy'
-          }
-        ],
-        listForCommitComment: [
-          'GET /repos/{owner}/{repo}/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        listForIssue: [
-          'GET /repos/{owner}/{repo}/issues/{issue_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        listForIssueComment: [
-          'GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        listForPullRequestReviewComment: [
-          'GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        listForTeamDiscussionCommentInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ],
-        listForTeamDiscussionInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions',
-          {
-            mediaType: {
-              previews: ['squirrel-girl']
-            }
-          }
-        ]
+        listForCommitComment: ['GET /repos/{owner}/{repo}/comments/{comment_id}/reactions'],
+        listForIssue: ['GET /repos/{owner}/{repo}/issues/{issue_number}/reactions'],
+        listForIssueComment: ['GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions'],
+        listForPullRequestReviewComment: ['GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions'],
+        listForRelease: ['GET /repos/{owner}/{repo}/releases/{release_id}/reactions'],
+        listForTeamDiscussionCommentInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions'],
+        listForTeamDiscussionInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions']
       },
       repos: {
-        acceptInvitation: ['PATCH /user/repository_invitations/{invitation_id}'],
+        acceptInvitation: [
+          'PATCH /user/repository_invitations/{invitation_id}',
+          {},
+          {
+            renamed: ['repos', 'acceptInvitationForAuthenticatedUser']
+          }
+        ],
+        acceptInvitationForAuthenticatedUser: ['PATCH /user/repository_invitations/{invitation_id}'],
         addAppAccessRestrictions: [
           'POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps',
           {},
@@ -16733,26 +15392,13 @@ var require_dist_node9 = __commonJS({
           }
         ],
         checkCollaborator: ['GET /repos/{owner}/{repo}/collaborators/{username}'],
-        checkVulnerabilityAlerts: [
-          'GET /repos/{owner}/{repo}/vulnerability-alerts',
-          {
-            mediaType: {
-              previews: ['dorian']
-            }
-          }
-        ],
+        checkVulnerabilityAlerts: ['GET /repos/{owner}/{repo}/vulnerability-alerts'],
+        codeownersErrors: ['GET /repos/{owner}/{repo}/codeowners/errors'],
         compareCommits: ['GET /repos/{owner}/{repo}/compare/{base}...{head}'],
         compareCommitsWithBasehead: ['GET /repos/{owner}/{repo}/compare/{basehead}'],
         createAutolink: ['POST /repos/{owner}/{repo}/autolinks'],
         createCommitComment: ['POST /repos/{owner}/{repo}/commits/{commit_sha}/comments'],
-        createCommitSignatureProtection: [
-          'POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures',
-          {
-            mediaType: {
-              previews: ['zzzax']
-            }
-          }
-        ],
+        createCommitSignatureProtection: ['POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures'],
         createCommitStatus: ['POST /repos/{owner}/{repo}/statuses/{sha}'],
         createDeployKey: ['POST /repos/{owner}/{repo}/keys'],
         createDeployment: ['POST /repos/{owner}/{repo}/deployments'],
@@ -16763,78 +15409,40 @@ var require_dist_node9 = __commonJS({
         createInOrg: ['POST /orgs/{org}/repos'],
         createOrUpdateEnvironment: ['PUT /repos/{owner}/{repo}/environments/{environment_name}'],
         createOrUpdateFileContents: ['PUT /repos/{owner}/{repo}/contents/{path}'],
-        createPagesSite: [
-          'POST /repos/{owner}/{repo}/pages',
-          {
-            mediaType: {
-              previews: ['switcheroo']
-            }
-          }
-        ],
+        createPagesSite: ['POST /repos/{owner}/{repo}/pages'],
         createRelease: ['POST /repos/{owner}/{repo}/releases'],
-        createUsingTemplate: [
-          'POST /repos/{template_owner}/{template_repo}/generate',
+        createTagProtection: ['POST /repos/{owner}/{repo}/tags/protection'],
+        createUsingTemplate: ['POST /repos/{template_owner}/{template_repo}/generate'],
+        createWebhook: ['POST /repos/{owner}/{repo}/hooks'],
+        declineInvitation: [
+          'DELETE /user/repository_invitations/{invitation_id}',
+          {},
           {
-            mediaType: {
-              previews: ['baptiste']
-            }
+            renamed: ['repos', 'declineInvitationForAuthenticatedUser']
           }
         ],
-        createWebhook: ['POST /repos/{owner}/{repo}/hooks'],
-        declineInvitation: ['DELETE /user/repository_invitations/{invitation_id}'],
+        declineInvitationForAuthenticatedUser: ['DELETE /user/repository_invitations/{invitation_id}'],
         delete: ['DELETE /repos/{owner}/{repo}'],
-        deleteAccessRestrictions: [
-          'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions'
-        ],
-        deleteAdminBranchProtection: [
-          'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'
-        ],
+        deleteAccessRestrictions: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions'],
+        deleteAdminBranchProtection: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'],
         deleteAnEnvironment: ['DELETE /repos/{owner}/{repo}/environments/{environment_name}'],
         deleteAutolink: ['DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}'],
         deleteBranchProtection: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection'],
         deleteCommitComment: ['DELETE /repos/{owner}/{repo}/comments/{comment_id}'],
-        deleteCommitSignatureProtection: [
-          'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures',
-          {
-            mediaType: {
-              previews: ['zzzax']
-            }
-          }
-        ],
+        deleteCommitSignatureProtection: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures'],
         deleteDeployKey: ['DELETE /repos/{owner}/{repo}/keys/{key_id}'],
         deleteDeployment: ['DELETE /repos/{owner}/{repo}/deployments/{deployment_id}'],
         deleteFile: ['DELETE /repos/{owner}/{repo}/contents/{path}'],
         deleteInvitation: ['DELETE /repos/{owner}/{repo}/invitations/{invitation_id}'],
-        deletePagesSite: [
-          'DELETE /repos/{owner}/{repo}/pages',
-          {
-            mediaType: {
-              previews: ['switcheroo']
-            }
-          }
-        ],
-        deletePullRequestReviewProtection: [
-          'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'
-        ],
+        deletePagesSite: ['DELETE /repos/{owner}/{repo}/pages'],
+        deletePullRequestReviewProtection: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'],
         deleteRelease: ['DELETE /repos/{owner}/{repo}/releases/{release_id}'],
         deleteReleaseAsset: ['DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}'],
+        deleteTagProtection: ['DELETE /repos/{owner}/{repo}/tags/protection/{tag_protection_id}'],
         deleteWebhook: ['DELETE /repos/{owner}/{repo}/hooks/{hook_id}'],
-        disableAutomatedSecurityFixes: [
-          'DELETE /repos/{owner}/{repo}/automated-security-fixes',
-          {
-            mediaType: {
-              previews: ['london']
-            }
-          }
-        ],
-        disableVulnerabilityAlerts: [
-          'DELETE /repos/{owner}/{repo}/vulnerability-alerts',
-          {
-            mediaType: {
-              previews: ['dorian']
-            }
-          }
-        ],
+        disableAutomatedSecurityFixes: ['DELETE /repos/{owner}/{repo}/automated-security-fixes'],
+        disableLfsForRepo: ['DELETE /repos/{owner}/{repo}/lfs'],
+        disableVulnerabilityAlerts: ['DELETE /repos/{owner}/{repo}/vulnerability-alerts'],
         downloadArchive: [
           'GET /repos/{owner}/{repo}/zipball/{ref}',
           {},
@@ -16844,72 +15452,34 @@ var require_dist_node9 = __commonJS({
         ],
         downloadTarballArchive: ['GET /repos/{owner}/{repo}/tarball/{ref}'],
         downloadZipballArchive: ['GET /repos/{owner}/{repo}/zipball/{ref}'],
-        enableAutomatedSecurityFixes: [
-          'PUT /repos/{owner}/{repo}/automated-security-fixes',
-          {
-            mediaType: {
-              previews: ['london']
-            }
-          }
-        ],
-        enableVulnerabilityAlerts: [
-          'PUT /repos/{owner}/{repo}/vulnerability-alerts',
-          {
-            mediaType: {
-              previews: ['dorian']
-            }
-          }
-        ],
+        enableAutomatedSecurityFixes: ['PUT /repos/{owner}/{repo}/automated-security-fixes'],
+        enableLfsForRepo: ['PUT /repos/{owner}/{repo}/lfs'],
+        enableVulnerabilityAlerts: ['PUT /repos/{owner}/{repo}/vulnerability-alerts'],
+        generateReleaseNotes: ['POST /repos/{owner}/{repo}/releases/generate-notes'],
         get: ['GET /repos/{owner}/{repo}'],
-        getAccessRestrictions: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions'
-        ],
-        getAdminBranchProtection: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'
-        ],
+        getAccessRestrictions: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions'],
+        getAdminBranchProtection: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'],
         getAllEnvironments: ['GET /repos/{owner}/{repo}/environments'],
-        getAllStatusCheckContexts: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts'
-        ],
-        getAllTopics: [
-          'GET /repos/{owner}/{repo}/topics',
-          {
-            mediaType: {
-              previews: ['mercy']
-            }
-          }
-        ],
-        getAppsWithAccessToProtectedBranch: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps'
-        ],
+        getAllStatusCheckContexts: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts'],
+        getAllTopics: ['GET /repos/{owner}/{repo}/topics'],
+        getAppsWithAccessToProtectedBranch: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps'],
         getAutolink: ['GET /repos/{owner}/{repo}/autolinks/{autolink_id}'],
         getBranch: ['GET /repos/{owner}/{repo}/branches/{branch}'],
         getBranchProtection: ['GET /repos/{owner}/{repo}/branches/{branch}/protection'],
         getClones: ['GET /repos/{owner}/{repo}/traffic/clones'],
         getCodeFrequencyStats: ['GET /repos/{owner}/{repo}/stats/code_frequency'],
-        getCollaboratorPermissionLevel: [
-          'GET /repos/{owner}/{repo}/collaborators/{username}/permission'
-        ],
+        getCollaboratorPermissionLevel: ['GET /repos/{owner}/{repo}/collaborators/{username}/permission'],
         getCombinedStatusForRef: ['GET /repos/{owner}/{repo}/commits/{ref}/status'],
         getCommit: ['GET /repos/{owner}/{repo}/commits/{ref}'],
         getCommitActivityStats: ['GET /repos/{owner}/{repo}/stats/commit_activity'],
         getCommitComment: ['GET /repos/{owner}/{repo}/comments/{comment_id}'],
-        getCommitSignatureProtection: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures',
-          {
-            mediaType: {
-              previews: ['zzzax']
-            }
-          }
-        ],
+        getCommitSignatureProtection: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures'],
         getCommunityProfileMetrics: ['GET /repos/{owner}/{repo}/community/profile'],
         getContent: ['GET /repos/{owner}/{repo}/contents/{path}'],
         getContributorsStats: ['GET /repos/{owner}/{repo}/stats/contributors'],
         getDeployKey: ['GET /repos/{owner}/{repo}/keys/{key_id}'],
         getDeployment: ['GET /repos/{owner}/{repo}/deployments/{deployment_id}'],
-        getDeploymentStatus: [
-          'GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}'
-        ],
+        getDeploymentStatus: ['GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}'],
         getEnvironment: ['GET /repos/{owner}/{repo}/environments/{environment_name}'],
         getLatestPagesBuild: ['GET /repos/{owner}/{repo}/pages/builds/latest'],
         getLatestRelease: ['GET /repos/{owner}/{repo}/releases/latest'],
@@ -16917,40 +15487,25 @@ var require_dist_node9 = __commonJS({
         getPagesBuild: ['GET /repos/{owner}/{repo}/pages/builds/{build_id}'],
         getPagesHealthCheck: ['GET /repos/{owner}/{repo}/pages/health'],
         getParticipationStats: ['GET /repos/{owner}/{repo}/stats/participation'],
-        getPullRequestReviewProtection: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'
-        ],
+        getPullRequestReviewProtection: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'],
         getPunchCardStats: ['GET /repos/{owner}/{repo}/stats/punch_card'],
         getReadme: ['GET /repos/{owner}/{repo}/readme'],
         getReadmeInDirectory: ['GET /repos/{owner}/{repo}/readme/{dir}'],
         getRelease: ['GET /repos/{owner}/{repo}/releases/{release_id}'],
         getReleaseAsset: ['GET /repos/{owner}/{repo}/releases/assets/{asset_id}'],
         getReleaseByTag: ['GET /repos/{owner}/{repo}/releases/tags/{tag}'],
-        getStatusChecksProtection: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'
-        ],
-        getTeamsWithAccessToProtectedBranch: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams'
-        ],
+        getStatusChecksProtection: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'],
+        getTeamsWithAccessToProtectedBranch: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams'],
         getTopPaths: ['GET /repos/{owner}/{repo}/traffic/popular/paths'],
         getTopReferrers: ['GET /repos/{owner}/{repo}/traffic/popular/referrers'],
-        getUsersWithAccessToProtectedBranch: [
-          'GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users'
-        ],
+        getUsersWithAccessToProtectedBranch: ['GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users'],
         getViews: ['GET /repos/{owner}/{repo}/traffic/views'],
         getWebhook: ['GET /repos/{owner}/{repo}/hooks/{hook_id}'],
         getWebhookConfigForRepo: ['GET /repos/{owner}/{repo}/hooks/{hook_id}/config'],
         getWebhookDelivery: ['GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}'],
         listAutolinks: ['GET /repos/{owner}/{repo}/autolinks'],
         listBranches: ['GET /repos/{owner}/{repo}/branches'],
-        listBranchesForHeadCommit: [
-          'GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head',
-          {
-            mediaType: {
-              previews: ['groot']
-            }
-          }
-        ],
+        listBranchesForHeadCommit: ['GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head'],
         listCollaborators: ['GET /repos/{owner}/{repo}/collaborators'],
         listCommentsForCommit: ['GET /repos/{owner}/{repo}/commits/{commit_sha}/comments'],
         listCommitCommentsForRepo: ['GET /repos/{owner}/{repo}/comments'],
@@ -16969,16 +15524,10 @@ var require_dist_node9 = __commonJS({
         listLanguages: ['GET /repos/{owner}/{repo}/languages'],
         listPagesBuilds: ['GET /repos/{owner}/{repo}/pages/builds'],
         listPublic: ['GET /repositories'],
-        listPullRequestsAssociatedWithCommit: [
-          'GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls',
-          {
-            mediaType: {
-              previews: ['groot']
-            }
-          }
-        ],
+        listPullRequestsAssociatedWithCommit: ['GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls'],
         listReleaseAssets: ['GET /repos/{owner}/{repo}/releases/{release_id}/assets'],
         listReleases: ['GET /repos/{owner}/{repo}/releases'],
+        listTagProtection: ['GET /repos/{owner}/{repo}/tags/protection'],
         listTags: ['GET /repos/{owner}/{repo}/tags'],
         listTeams: ['GET /repos/{owner}/{repo}/teams'],
         listWebhookDeliveries: ['GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries'],
@@ -16986,9 +15535,7 @@ var require_dist_node9 = __commonJS({
         merge: ['POST /repos/{owner}/{repo}/merges'],
         mergeUpstream: ['POST /repos/{owner}/{repo}/merge-upstream'],
         pingWebhook: ['POST /repos/{owner}/{repo}/hooks/{hook_id}/pings'],
-        redeliverWebhookDelivery: [
-          'POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts'
-        ],
+        redeliverWebhookDelivery: ['POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts'],
         removeAppAccessRestrictions: [
           'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps',
           {},
@@ -17004,9 +15551,7 @@ var require_dist_node9 = __commonJS({
             mapToData: 'contexts'
           }
         ],
-        removeStatusCheckProtection: [
-          'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'
-        ],
+        removeStatusCheckProtection: ['DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'],
         removeTeamAccessRestrictions: [
           'DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams',
           {},
@@ -17022,18 +15567,9 @@ var require_dist_node9 = __commonJS({
           }
         ],
         renameBranch: ['POST /repos/{owner}/{repo}/branches/{branch}/rename'],
-        replaceAllTopics: [
-          'PUT /repos/{owner}/{repo}/topics',
-          {
-            mediaType: {
-              previews: ['mercy']
-            }
-          }
-        ],
+        replaceAllTopics: ['PUT /repos/{owner}/{repo}/topics'],
         requestPagesBuild: ['POST /repos/{owner}/{repo}/pages/builds'],
-        setAdminBranchProtection: [
-          'POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'
-        ],
+        setAdminBranchProtection: ['POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins'],
         setAppAccessRestrictions: [
           'PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps',
           {},
@@ -17069,9 +15605,7 @@ var require_dist_node9 = __commonJS({
         updateCommitComment: ['PATCH /repos/{owner}/{repo}/comments/{comment_id}'],
         updateInformationAboutPagesSite: ['PUT /repos/{owner}/{repo}/pages'],
         updateInvitation: ['PATCH /repos/{owner}/{repo}/invitations/{invitation_id}'],
-        updatePullRequestReviewProtection: [
-          'PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'
-        ],
+        updatePullRequestReviewProtection: ['PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews'],
         updateRelease: ['PATCH /repos/{owner}/{repo}/releases/{release_id}'],
         updateReleaseAsset: ['PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}'],
         updateStatusCheckPotection: [
@@ -17081,9 +15615,7 @@ var require_dist_node9 = __commonJS({
             renamed: ['repos', 'updateStatusCheckProtection']
           }
         ],
-        updateStatusCheckProtection: [
-          'PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'
-        ],
+        updateStatusCheckProtection: ['PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks'],
         updateWebhook: ['PATCH /repos/{owner}/{repo}/hooks/{hook_id}'],
         updateWebhookConfigForRepo: ['PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config'],
         uploadReleaseAsset: [
@@ -17095,140 +15627,194 @@ var require_dist_node9 = __commonJS({
       },
       search: {
         code: ['GET /search/code'],
-        commits: [
-          'GET /search/commits',
-          {
-            mediaType: {
-              previews: ['cloak']
-            }
-          }
-        ],
+        commits: ['GET /search/commits'],
         issuesAndPullRequests: ['GET /search/issues'],
         labels: ['GET /search/labels'],
         repos: ['GET /search/repositories'],
-        topics: [
-          'GET /search/topics',
-          {
-            mediaType: {
-              previews: ['mercy']
-            }
-          }
-        ],
+        topics: ['GET /search/topics'],
         users: ['GET /search/users']
       },
       secretScanning: {
         getAlert: ['GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}'],
+        listAlertsForEnterprise: ['GET /enterprises/{enterprise}/secret-scanning/alerts'],
         listAlertsForOrg: ['GET /orgs/{org}/secret-scanning/alerts'],
         listAlertsForRepo: ['GET /repos/{owner}/{repo}/secret-scanning/alerts'],
+        listLocationsForAlert: ['GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations'],
         updateAlert: ['PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}']
       },
       teams: {
-        addOrUpdateMembershipForUserInOrg: [
-          'PUT /orgs/{org}/teams/{team_slug}/memberships/{username}'
-        ],
-        addOrUpdateProjectPermissionsInOrg: [
-          'PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
+        addOrUpdateMembershipForUserInOrg: ['PUT /orgs/{org}/teams/{team_slug}/memberships/{username}'],
+        addOrUpdateProjectPermissionsInOrg: ['PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}'],
         addOrUpdateRepoPermissionsInOrg: ['PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}'],
-        checkPermissionsForProjectInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/projects/{project_id}',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
+        checkPermissionsForProjectInOrg: ['GET /orgs/{org}/teams/{team_slug}/projects/{project_id}'],
         checkPermissionsForRepoInOrg: ['GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}'],
         create: ['POST /orgs/{org}/teams'],
-        createDiscussionCommentInOrg: [
-          'POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments'
-        ],
+        createDiscussionCommentInOrg: ['POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments'],
         createDiscussionInOrg: ['POST /orgs/{org}/teams/{team_slug}/discussions'],
-        deleteDiscussionCommentInOrg: [
-          'DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'
-        ],
-        deleteDiscussionInOrg: [
-          'DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}'
-        ],
+        deleteDiscussionCommentInOrg: ['DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'],
+        deleteDiscussionInOrg: ['DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}'],
         deleteInOrg: ['DELETE /orgs/{org}/teams/{team_slug}'],
         getByName: ['GET /orgs/{org}/teams/{team_slug}'],
-        getDiscussionCommentInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'
-        ],
+        getDiscussionCommentInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'],
         getDiscussionInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}'],
         getMembershipForUserInOrg: ['GET /orgs/{org}/teams/{team_slug}/memberships/{username}'],
         list: ['GET /orgs/{org}/teams'],
         listChildInOrg: ['GET /orgs/{org}/teams/{team_slug}/teams'],
-        listDiscussionCommentsInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments'
-        ],
+        listDiscussionCommentsInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments'],
         listDiscussionsInOrg: ['GET /orgs/{org}/teams/{team_slug}/discussions'],
         listForAuthenticatedUser: ['GET /user/teams'],
         listMembersInOrg: ['GET /orgs/{org}/teams/{team_slug}/members'],
         listPendingInvitationsInOrg: ['GET /orgs/{org}/teams/{team_slug}/invitations'],
-        listProjectsInOrg: [
-          'GET /orgs/{org}/teams/{team_slug}/projects',
-          {
-            mediaType: {
-              previews: ['inertia']
-            }
-          }
-        ],
+        listProjectsInOrg: ['GET /orgs/{org}/teams/{team_slug}/projects'],
         listReposInOrg: ['GET /orgs/{org}/teams/{team_slug}/repos'],
-        removeMembershipForUserInOrg: [
-          'DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}'
-        ],
+        removeMembershipForUserInOrg: ['DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}'],
         removeProjectInOrg: ['DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}'],
         removeRepoInOrg: ['DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}'],
-        updateDiscussionCommentInOrg: [
-          'PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'
-        ],
-        updateDiscussionInOrg: [
-          'PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}'
-        ],
+        updateDiscussionCommentInOrg: ['PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}'],
+        updateDiscussionInOrg: ['PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}'],
         updateInOrg: ['PATCH /orgs/{org}/teams/{team_slug}']
       },
       users: {
-        addEmailForAuthenticated: ['POST /user/emails'],
+        addEmailForAuthenticated: [
+          'POST /user/emails',
+          {},
+          {
+            renamed: ['users', 'addEmailForAuthenticatedUser']
+          }
+        ],
+        addEmailForAuthenticatedUser: ['POST /user/emails'],
         block: ['PUT /user/blocks/{username}'],
         checkBlocked: ['GET /user/blocks/{username}'],
         checkFollowingForUser: ['GET /users/{username}/following/{target_user}'],
         checkPersonIsFollowedByAuthenticated: ['GET /user/following/{username}'],
-        createGpgKeyForAuthenticated: ['POST /user/gpg_keys'],
-        createPublicSshKeyForAuthenticated: ['POST /user/keys'],
-        deleteEmailForAuthenticated: ['DELETE /user/emails'],
-        deleteGpgKeyForAuthenticated: ['DELETE /user/gpg_keys/{gpg_key_id}'],
-        deletePublicSshKeyForAuthenticated: ['DELETE /user/keys/{key_id}'],
+        createGpgKeyForAuthenticated: [
+          'POST /user/gpg_keys',
+          {},
+          {
+            renamed: ['users', 'createGpgKeyForAuthenticatedUser']
+          }
+        ],
+        createGpgKeyForAuthenticatedUser: ['POST /user/gpg_keys'],
+        createPublicSshKeyForAuthenticated: [
+          'POST /user/keys',
+          {},
+          {
+            renamed: ['users', 'createPublicSshKeyForAuthenticatedUser']
+          }
+        ],
+        createPublicSshKeyForAuthenticatedUser: ['POST /user/keys'],
+        deleteEmailForAuthenticated: [
+          'DELETE /user/emails',
+          {},
+          {
+            renamed: ['users', 'deleteEmailForAuthenticatedUser']
+          }
+        ],
+        deleteEmailForAuthenticatedUser: ['DELETE /user/emails'],
+        deleteGpgKeyForAuthenticated: [
+          'DELETE /user/gpg_keys/{gpg_key_id}',
+          {},
+          {
+            renamed: ['users', 'deleteGpgKeyForAuthenticatedUser']
+          }
+        ],
+        deleteGpgKeyForAuthenticatedUser: ['DELETE /user/gpg_keys/{gpg_key_id}'],
+        deletePublicSshKeyForAuthenticated: [
+          'DELETE /user/keys/{key_id}',
+          {},
+          {
+            renamed: ['users', 'deletePublicSshKeyForAuthenticatedUser']
+          }
+        ],
+        deletePublicSshKeyForAuthenticatedUser: ['DELETE /user/keys/{key_id}'],
         follow: ['PUT /user/following/{username}'],
         getAuthenticated: ['GET /user'],
         getByUsername: ['GET /users/{username}'],
         getContextForUser: ['GET /users/{username}/hovercard'],
-        getGpgKeyForAuthenticated: ['GET /user/gpg_keys/{gpg_key_id}'],
-        getPublicSshKeyForAuthenticated: ['GET /user/keys/{key_id}'],
+        getGpgKeyForAuthenticated: [
+          'GET /user/gpg_keys/{gpg_key_id}',
+          {},
+          {
+            renamed: ['users', 'getGpgKeyForAuthenticatedUser']
+          }
+        ],
+        getGpgKeyForAuthenticatedUser: ['GET /user/gpg_keys/{gpg_key_id}'],
+        getPublicSshKeyForAuthenticated: [
+          'GET /user/keys/{key_id}',
+          {},
+          {
+            renamed: ['users', 'getPublicSshKeyForAuthenticatedUser']
+          }
+        ],
+        getPublicSshKeyForAuthenticatedUser: ['GET /user/keys/{key_id}'],
         list: ['GET /users'],
-        listBlockedByAuthenticated: ['GET /user/blocks'],
-        listEmailsForAuthenticated: ['GET /user/emails'],
-        listFollowedByAuthenticated: ['GET /user/following'],
+        listBlockedByAuthenticated: [
+          'GET /user/blocks',
+          {},
+          {
+            renamed: ['users', 'listBlockedByAuthenticatedUser']
+          }
+        ],
+        listBlockedByAuthenticatedUser: ['GET /user/blocks'],
+        listEmailsForAuthenticated: [
+          'GET /user/emails',
+          {},
+          {
+            renamed: ['users', 'listEmailsForAuthenticatedUser']
+          }
+        ],
+        listEmailsForAuthenticatedUser: ['GET /user/emails'],
+        listFollowedByAuthenticated: [
+          'GET /user/following',
+          {},
+          {
+            renamed: ['users', 'listFollowedByAuthenticatedUser']
+          }
+        ],
+        listFollowedByAuthenticatedUser: ['GET /user/following'],
         listFollowersForAuthenticatedUser: ['GET /user/followers'],
         listFollowersForUser: ['GET /users/{username}/followers'],
         listFollowingForUser: ['GET /users/{username}/following'],
-        listGpgKeysForAuthenticated: ['GET /user/gpg_keys'],
+        listGpgKeysForAuthenticated: [
+          'GET /user/gpg_keys',
+          {},
+          {
+            renamed: ['users', 'listGpgKeysForAuthenticatedUser']
+          }
+        ],
+        listGpgKeysForAuthenticatedUser: ['GET /user/gpg_keys'],
         listGpgKeysForUser: ['GET /users/{username}/gpg_keys'],
-        listPublicEmailsForAuthenticated: ['GET /user/public_emails'],
+        listPublicEmailsForAuthenticated: [
+          'GET /user/public_emails',
+          {},
+          {
+            renamed: ['users', 'listPublicEmailsForAuthenticatedUser']
+          }
+        ],
+        listPublicEmailsForAuthenticatedUser: ['GET /user/public_emails'],
         listPublicKeysForUser: ['GET /users/{username}/keys'],
-        listPublicSshKeysForAuthenticated: ['GET /user/keys'],
-        setPrimaryEmailVisibilityForAuthenticated: ['PATCH /user/email/visibility'],
+        listPublicSshKeysForAuthenticated: [
+          'GET /user/keys',
+          {},
+          {
+            renamed: ['users', 'listPublicSshKeysForAuthenticatedUser']
+          }
+        ],
+        listPublicSshKeysForAuthenticatedUser: ['GET /user/keys'],
+        setPrimaryEmailVisibilityForAuthenticated: [
+          'PATCH /user/email/visibility',
+          {},
+          {
+            renamed: ['users', 'setPrimaryEmailVisibilityForAuthenticatedUser']
+          }
+        ],
+        setPrimaryEmailVisibilityForAuthenticatedUser: ['PATCH /user/email/visibility'],
         unblock: ['DELETE /user/blocks/{username}'],
         unfollow: ['DELETE /user/following/{username}'],
         updateAuthenticated: ['PATCH /user']
       }
     };
-    var VERSION = '5.10.1';
+    var VERSION = '5.16.2';
     function endpointsToMethods(octokit2, endpointsMap) {
       const newMethods = {};
       for (const [scope, endpoints] of Object.entries(endpointsMap)) {
@@ -17247,13 +15833,7 @@ var require_dist_node9 = __commonJS({
           }
           const scopeMethods = newMethods[scope];
           if (decorations) {
-            scopeMethods[methodName] = decorate(
-              octokit2,
-              scope,
-              methodName,
-              endpointDefaults,
-              decorations
-            );
+            scopeMethods[methodName] = decorate(octokit2, scope, methodName, endpointDefaults, decorations);
             continue;
           }
           scopeMethods[methodName] = octokit2.request.defaults(endpointDefaults);
@@ -17274,9 +15854,7 @@ var require_dist_node9 = __commonJS({
         }
         if (decorations.renamed) {
           const [newScope, newMethodName] = decorations.renamed;
-          octokit2.log.warn(
-            `octokit.${scope}.${methodName}() has been renamed to octokit.${newScope}.${newMethodName}()`
-          );
+          octokit2.log.warn(`octokit.${scope}.${methodName}() has been renamed to octokit.${newScope}.${newMethodName}()`);
         }
         if (decorations.deprecated) {
           octokit2.log.warn(decorations.deprecated);
@@ -17285,9 +15863,7 @@ var require_dist_node9 = __commonJS({
           const options2 = requestWithDefaults.endpoint.merge(...args);
           for (const [name, alias] of Object.entries(decorations.renamedParameters)) {
             if (name in options2) {
-              octokit2.log.warn(
-                `"${name}" parameter is deprecated for "octokit.${scope}.${methodName}()". Use "${alias}" instead`
-              );
+              octokit2.log.warn(`"${name}" parameter is deprecated for "octokit.${scope}.${methodName}()". Use "${alias}" instead`);
               if (!(alias in options2)) {
                 options2[alias] = options2[name];
               }
@@ -17328,34 +15904,31 @@ var require_dist_node10 = __commonJS({
   'node_modules/@octokit/plugin-paginate-rest/dist-node/index.js'(exports2) {
     'use strict';
     Object.defineProperty(exports2, '__esModule', { value: true });
-    var VERSION = '2.16.0';
+    var VERSION = '2.21.3';
     function ownKeys(object, enumerableOnly) {
       var keys = Object.keys(object);
       if (Object.getOwnPropertySymbols) {
         var symbols = Object.getOwnPropertySymbols(object);
-        if (enumerableOnly) {
-          symbols = symbols.filter(function (sym) {
+        enumerableOnly &&
+          (symbols = symbols.filter(function (sym) {
             return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-          });
-        }
-        keys.push.apply(keys, symbols);
+          })),
+          keys.push.apply(keys, symbols);
       }
       return keys;
     }
     function _objectSpread2(target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i] != null ? arguments[i] : {};
-        if (i % 2) {
-          ownKeys(Object(source), true).forEach(function (key) {
-            _defineProperty(target, key, source[key]);
-          });
-        } else if (Object.getOwnPropertyDescriptors) {
-          Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-        } else {
-          ownKeys(Object(source)).forEach(function (key) {
-            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-          });
-        }
+        i % 2
+          ? ownKeys(Object(source), true).forEach(function (key) {
+              _defineProperty(target, key, source[key]);
+            })
+          : Object.getOwnPropertyDescriptors
+          ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source))
+          : ownKeys(Object(source)).forEach(function (key) {
+              Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+            });
       }
       return target;
     }
@@ -17382,8 +15955,7 @@ var require_dist_node10 = __commonJS({
           }
         );
       }
-      const responseNeedsNormalization =
-        'total_count' in response.data && !('url' in response.data);
+      const responseNeedsNormalization = 'total_count' in response.data && !('url' in response.data);
       if (!responseNeedsNormalization) return response;
       const incompleteResults = response.data.incomplete_results;
       const repositorySelection = response.data.repository_selection;
@@ -17404,10 +15976,7 @@ var require_dist_node10 = __commonJS({
       return response;
     }
     function iterator(octokit2, route, parameters) {
-      const options =
-        typeof route === 'function'
-          ? route.endpoint(parameters)
-          : octokit2.request.endpoint(route, parameters);
+      const options = typeof route === 'function' ? route.endpoint(parameters) : octokit2.request.endpoint(route, parameters);
       const requestMethod = typeof route === 'function' ? route : octokit2.request;
       const method = options.method;
       const headers = options.headers;
@@ -17426,8 +15995,7 @@ var require_dist_node10 = __commonJS({
                 headers
               });
               const normalizedResponse = normalizePaginatedListResponse(response);
-              url = ((normalizedResponse.headers.link || '').match(/<([^>]+)>;\s*rel="next"/) ||
-                [])[1];
+              url = ((normalizedResponse.headers.link || '').match(/<([^>]+)>;\s*rel="next"/) || [])[1];
               return {
                 value: normalizedResponse
               };
@@ -17451,12 +16019,7 @@ var require_dist_node10 = __commonJS({
         mapFn = parameters;
         parameters = void 0;
       }
-      return gather(
-        octokit2,
-        [],
-        iterator(octokit2, route, parameters)[Symbol.asyncIterator](),
-        mapFn
-      );
+      return gather(octokit2, [], iterator(octokit2, route, parameters)[Symbol.asyncIterator](), mapFn);
     }
     function gather(octokit2, results, iterator2, mapFn) {
       return iterator2.next().then(result => {
@@ -17487,7 +16050,9 @@ var require_dist_node10 = __commonJS({
       'GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations',
       'GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners',
       'GET /enterprises/{enterprise}/actions/runners',
-      'GET /enterprises/{enterprise}/actions/runners/downloads',
+      'GET /enterprises/{enterprise}/audit-log',
+      'GET /enterprises/{enterprise}/secret-scanning/alerts',
+      'GET /enterprises/{enterprise}/settings/billing/advanced-security',
       'GET /events',
       'GET /gists',
       'GET /gists/public',
@@ -17497,6 +16062,7 @@ var require_dist_node10 = __commonJS({
       'GET /gists/{gist_id}/forks',
       'GET /installation/repositories',
       'GET /issues',
+      'GET /licenses',
       'GET /marketplace_listing/plans',
       'GET /marketplace_listing/plans/{plan_id}/accounts',
       'GET /marketplace_listing/stubbed/plans',
@@ -17504,17 +16070,23 @@ var require_dist_node10 = __commonJS({
       'GET /networks/{owner}/{repo}/events',
       'GET /notifications',
       'GET /organizations',
+      'GET /orgs/{org}/actions/cache/usage-by-repository',
       'GET /orgs/{org}/actions/permissions/repositories',
       'GET /orgs/{org}/actions/runner-groups',
       'GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories',
       'GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners',
       'GET /orgs/{org}/actions/runners',
-      'GET /orgs/{org}/actions/runners/downloads',
       'GET /orgs/{org}/actions/secrets',
       'GET /orgs/{org}/actions/secrets/{secret_name}/repositories',
+      'GET /orgs/{org}/audit-log',
       'GET /orgs/{org}/blocks',
+      'GET /orgs/{org}/code-scanning/alerts',
+      'GET /orgs/{org}/codespaces',
       'GET /orgs/{org}/credential-authorizations',
+      'GET /orgs/{org}/dependabot/secrets',
+      'GET /orgs/{org}/dependabot/secrets/{secret_name}/repositories',
       'GET /orgs/{org}/events',
+      'GET /orgs/{org}/external-groups',
       'GET /orgs/{org}/failed_invitations',
       'GET /orgs/{org}/hooks',
       'GET /orgs/{org}/hooks/{hook_id}/deliveries',
@@ -17527,10 +16099,12 @@ var require_dist_node10 = __commonJS({
       'GET /orgs/{org}/migrations/{migration_id}/repositories',
       'GET /orgs/{org}/outside_collaborators',
       'GET /orgs/{org}/packages',
+      'GET /orgs/{org}/packages/{package_type}/{package_name}/versions',
       'GET /orgs/{org}/projects',
       'GET /orgs/{org}/public_members',
       'GET /orgs/{org}/repos',
       'GET /orgs/{org}/secret-scanning/alerts',
+      'GET /orgs/{org}/settings/billing/advanced-security',
       'GET /orgs/{org}/team-sync/groups',
       'GET /orgs/{org}/teams',
       'GET /orgs/{org}/teams/{team_slug}/discussions',
@@ -17541,41 +16115,45 @@ var require_dist_node10 = __commonJS({
       'GET /orgs/{org}/teams/{team_slug}/members',
       'GET /orgs/{org}/teams/{team_slug}/projects',
       'GET /orgs/{org}/teams/{team_slug}/repos',
-      'GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings',
       'GET /orgs/{org}/teams/{team_slug}/teams',
       'GET /projects/columns/{column_id}/cards',
       'GET /projects/{project_id}/collaborators',
       'GET /projects/{project_id}/columns',
       'GET /repos/{owner}/{repo}/actions/artifacts',
+      'GET /repos/{owner}/{repo}/actions/caches',
       'GET /repos/{owner}/{repo}/actions/runners',
-      'GET /repos/{owner}/{repo}/actions/runners/downloads',
       'GET /repos/{owner}/{repo}/actions/runs',
       'GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts',
+      'GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}/jobs',
       'GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs',
       'GET /repos/{owner}/{repo}/actions/secrets',
       'GET /repos/{owner}/{repo}/actions/workflows',
       'GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs',
       'GET /repos/{owner}/{repo}/assignees',
-      'GET /repos/{owner}/{repo}/autolinks',
       'GET /repos/{owner}/{repo}/branches',
       'GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations',
       'GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs',
       'GET /repos/{owner}/{repo}/code-scanning/alerts',
       'GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances',
       'GET /repos/{owner}/{repo}/code-scanning/analyses',
+      'GET /repos/{owner}/{repo}/codespaces',
+      'GET /repos/{owner}/{repo}/codespaces/devcontainers',
+      'GET /repos/{owner}/{repo}/codespaces/secrets',
       'GET /repos/{owner}/{repo}/collaborators',
       'GET /repos/{owner}/{repo}/comments',
       'GET /repos/{owner}/{repo}/comments/{comment_id}/reactions',
       'GET /repos/{owner}/{repo}/commits',
-      'GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head',
       'GET /repos/{owner}/{repo}/commits/{commit_sha}/comments',
       'GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls',
       'GET /repos/{owner}/{repo}/commits/{ref}/check-runs',
       'GET /repos/{owner}/{repo}/commits/{ref}/check-suites',
+      'GET /repos/{owner}/{repo}/commits/{ref}/status',
       'GET /repos/{owner}/{repo}/commits/{ref}/statuses',
       'GET /repos/{owner}/{repo}/contributors',
+      'GET /repos/{owner}/{repo}/dependabot/secrets',
       'GET /repos/{owner}/{repo}/deployments',
       'GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses',
+      'GET /repos/{owner}/{repo}/environments',
       'GET /repos/{owner}/{repo}/events',
       'GET /repos/{owner}/{repo}/forks',
       'GET /repos/{owner}/{repo}/git/matching-refs/{ref}',
@@ -17609,16 +16187,16 @@ var require_dist_node10 = __commonJS({
       'GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments',
       'GET /repos/{owner}/{repo}/releases',
       'GET /repos/{owner}/{repo}/releases/{release_id}/assets',
+      'GET /repos/{owner}/{repo}/releases/{release_id}/reactions',
       'GET /repos/{owner}/{repo}/secret-scanning/alerts',
+      'GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations',
       'GET /repos/{owner}/{repo}/stargazers',
       'GET /repos/{owner}/{repo}/subscribers',
       'GET /repos/{owner}/{repo}/tags',
       'GET /repos/{owner}/{repo}/teams',
+      'GET /repos/{owner}/{repo}/topics',
       'GET /repositories',
       'GET /repositories/{repository_id}/environments/{environment_name}/secrets',
-      'GET /scim/v2/enterprises/{enterprise}/Groups',
-      'GET /scim/v2/enterprises/{enterprise}/Users',
-      'GET /scim/v2/organizations/{org}/Users',
       'GET /search/code',
       'GET /search/commits',
       'GET /search/issues',
@@ -17634,9 +16212,10 @@ var require_dist_node10 = __commonJS({
       'GET /teams/{team_id}/members',
       'GET /teams/{team_id}/projects',
       'GET /teams/{team_id}/repos',
-      'GET /teams/{team_id}/team-sync/group-mappings',
       'GET /teams/{team_id}/teams',
       'GET /user/blocks',
+      'GET /user/codespaces',
+      'GET /user/codespaces/secrets',
       'GET /user/emails',
       'GET /user/followers',
       'GET /user/following',
@@ -17652,13 +16231,13 @@ var require_dist_node10 = __commonJS({
       'GET /user/migrations/{migration_id}/repositories',
       'GET /user/orgs',
       'GET /user/packages',
+      'GET /user/packages/{package_type}/{package_name}/versions',
       'GET /user/public_emails',
       'GET /user/repos',
       'GET /user/repository_invitations',
       'GET /user/starred',
       'GET /user/subscriptions',
       'GET /user/teams',
-      'GET /user/{username}/packages',
       'GET /users',
       'GET /users/{username}/events',
       'GET /users/{username}/events/orgs/{org}',
@@ -17669,6 +16248,7 @@ var require_dist_node10 = __commonJS({
       'GET /users/{username}/gpg_keys',
       'GET /users/{username}/keys',
       'GET /users/{username}/orgs',
+      'GET /users/{username}/packages',
       'GET /users/{username}/projects',
       'GET /users/{username}/received_events',
       'GET /users/{username}/received_events/public',
@@ -17733,15 +16313,13 @@ var require_utils4 = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
       };
     Object.defineProperty(exports2, '__esModule', { value: true });
-    exports2.getOctokitOptions = exports2.GitHub = exports2.context = void 0;
+    exports2.getOctokitOptions = exports2.GitHub = exports2.defaults = exports2.context = void 0;
     var Context = __importStar(require_context());
     var Utils = __importStar(require_utils2());
     var core_1 = require_dist_node8();
@@ -17749,16 +16327,15 @@ var require_utils4 = __commonJS({
     var plugin_paginate_rest_1 = require_dist_node10();
     exports2.context = new Context.Context();
     var baseUrl = Utils.getApiBaseUrl();
-    var defaults = {
+    exports2.defaults = {
       baseUrl,
       request: {
         agent: Utils.getProxyAgent(baseUrl)
       }
     };
-    exports2.GitHub = core_1.Octokit.plugin(
-      plugin_rest_endpoint_methods_1.restEndpointMethods,
-      plugin_paginate_rest_1.paginateRest
-    ).defaults(defaults);
+    exports2.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(
+      exports2.defaults
+    );
     function getOctokitOptions(token2, options) {
       const opts = Object.assign({}, options || {});
       const auth = Utils.getAuthString(token2, opts);
@@ -17806,9 +16383,7 @@ var require_github = __commonJS({
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
-          for (var k in mod)
-            if (k !== 'default' && Object.hasOwnProperty.call(mod, k))
-              __createBinding(result, mod, k);
+          for (var k in mod) if (k !== 'default' && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
         }
         __setModuleDefault(result, mod);
         return result;
@@ -17818,8 +16393,9 @@ var require_github = __commonJS({
     var Context = __importStar(require_context());
     var utils_1 = require_utils4();
     exports2.context = new Context.Context();
-    function getOctokit(token2, options) {
-      return new utils_1.GitHub(utils_1.getOctokitOptions(token2, options));
+    function getOctokit(token2, options, ...additionalPlugins) {
+      const GitHubWithPlugins = utils_1.GitHub.plugin(...additionalPlugins);
+      return new GitHubWithPlugins(utils_1.getOctokitOptions(token2, options));
     }
     exports2.getOctokit = getOctokit;
   }
@@ -17837,81 +16413,77 @@ var branchNameInput = core.getInput('branch-name', requiredArgOptions);
 var branchName = branchNameInput.replace('refs/heads/', '').replace(/[^a-zA-Z0-9-]/g, '-');
 var branchPattern = `-${branchName}.`;
 var octokit = github.getOctokit(token);
-async function getListOfReleases() {
-  let hasMoreReleases = true;
-  let releasesToDelete = [];
-  let page = 1;
-  const maxResultsPerPage = 26;
-  core.info(`Gathering list of releases with '${branchPattern}' in the name or tag to delete...`);
-  while (hasMoreReleases) {
-    const response = await octokit.rest.repos.listReleases({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
-      per_page: maxResultsPerPage,
-      page
-    });
-    if (response.status == 200) {
-      if (response.data) {
-        if (response.data.length < maxResultsPerPage) {
-          hasMoreReleases = false;
-        } else {
-          page += 1;
-        }
-        for (let index = 0; index < response.data.length; index++) {
-          const release = response.data[index];
-          if (
-            release.prerelease &&
-            (release.name.indexOf(branchPattern) > -1 ||
-              release.tag_name.indexOf(branchPattern) > -1)
-          ) {
-            releasesToDelete.push({
-              name: release.name,
-              id: release.id,
-              tag: release.tag_name
-            });
-          } else {
-            core.info(
-              `Release ${release.name} with tag ${release.tag_name} does not meet the pattern and will not be deleted`
-            );
-          }
-        }
-      } else {
-        core.info('Finished getting releases for the repository.');
-      }
+function processReleases(releases) {
+  const releasesToDelete = [];
+  for (const release of releases) {
+    const nameOrTagIncludesBranchPattern = release.name.includes(branchPattern) || release.tag_name.includes(branchPattern);
+    if (release.prerelease && nameOrTagIncludesBranchPattern) {
+      releasesToDelete.push({
+        name: release.name,
+        id: release.id,
+        tag: release.tag_name
+      });
     } else {
-      core.setFailed(`An error occurred retrieving page ${page} of releases.`);
+      const name = release.name;
+      const tag = release.tag;
+      const message = `	Release ${name} with tag ${tag} does not meet the pattern and will not be deleted`;
+      core.info(message);
     }
   }
-  core.info('Finished gathering releases, the following items will be removed:');
-  console.log(releasesToDelete);
+  core.info('\nFinished gathering releases, the following items are pre-releases that match the branch pattern.  They will be removed:');
+  for (const r of releasesToDelete) {
+    core.info(`	${r.name}`);
+  }
+}
+async function getListOfReleases() {
+  let releasesToDelete = [];
+  core.info(`Gathering list of releases with '${branchPattern}' in the name or tag to delete...`);
+  await octokit
+    .paginate(octokit.rest.repos.listReleases, {
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo
+    })
+    .then(releases => {
+      releasesToDelete = processReleases(releases);
+    })
+    .catch(error => {
+      core.setFailed(`An error occurred retrieving the releases: ${error.message}`);
+    });
   return releasesToDelete;
 }
 async function deleteRelease(release) {
-  try {
-    core.info(`
+  core.info(`
 Deleting release ${release.name} (${release.id})...`);
-    await octokit.rest.repos.deleteRelease({
+  await octokit.rest.repos
+    .deleteRelease({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       release_id: release.id
+    })
+    .then(() => {
+      core.info(`Finished deleting release ${release.name} (${release.id}).`);
+    })
+    .catch(error => {
+      core.warning(`There was an error deleting the release ${release.name} (${release.id}): ${error.message}`);
     });
-    core.info(`Deleting tag ${release.tag}...`);
-    await octokit.rest.git.deleteRef({
+  core.info(`Deleting tag ${release.tag}...`);
+  await octokit.rest.git
+    .deleteRef({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       ref: `tags/${release.tag}`
+    })
+    .then(() => {
+      core.info(`Finished deleting tag ${release.tag}.`);
+    })
+    .catch(error => {
+      core.warning(`There was an error deleting the tag ${release.tag}: ${error.message}`);
     });
-    core.info(`Finished deleting release ${release.name} (${release.id}) and tag ${release.tag}.`);
-  } catch (error) {
-    core.warning(
-      `There was an error deleting the release ${release.name} (${release.id}) or tag ${release.tag}: ${error.message}`
-    );
-  }
 }
 async function run() {
-  let releasesToDelete = await getListOfReleases();
-  for (let index = 0; index < releasesToDelete.length; index++) {
-    await deleteRelease(releasesToDelete[index]);
+  const releasesToDelete = await getListOfReleases();
+  for (const r of releasesToDelete) {
+    await deleteRelease(r);
   }
 }
 run();
