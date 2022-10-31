@@ -5,16 +5,20 @@ const requiredArgOptions = {
   required: true,
   trimWhitespace: true
 };
+
 const token = core.getInput('github-token', requiredArgOptions);
 const branchNameInput = core.getInput('branch-name', requiredArgOptions);
+const orgName = github.context.repo.owner;
+const repoName = github.context.repo.repo;
+
 const branchName = branchNameInput.replace('refs/heads/', '').replace(/[^a-zA-Z0-9-]/g, '-');
 const branchPattern = `-${branchName}.`;
 const octokit = github.getOctokit(token);
 
-function processReleases(releases) {
+function processReleases(rawReleases) {
   const releasesToDelete = [];
 
-  for (const release of releases) {
+  for (const release of rawReleases) {
     const nameOrTagIncludesBranchPattern = release.name.includes(branchPattern) || release.tag_name.includes(branchPattern);
     if (release.prerelease && nameOrTagIncludesBranchPattern) {
       releasesToDelete.push({
@@ -24,8 +28,12 @@ function processReleases(releases) {
       });
     } else {
       const name = release.name;
-      const tag = release.tag;
-      const message = `\tRelease ${name} with tag ${tag} does not meet the pattern and will not be deleted`;
+      const tag = release.tag_name;
+      const message =
+        name === tag
+          ? `\t${name} does not meet the pattern and will not be deleted`
+          : `\t$Release {name} with ${tag} does not meet the pattern and will not be deleted`;
+
       core.info(message);
     }
   }
@@ -33,18 +41,20 @@ function processReleases(releases) {
   for (const r of releasesToDelete) {
     core.info(`\t${r.name}`);
   }
+  return releasesToDelete;
 }
+
 async function getListOfReleases() {
   let releasesToDelete = [];
   core.info(`Gathering list of releases with '${branchPattern}' in the name or tag to delete...`);
 
   await octokit
     .paginate(octokit.rest.repos.listReleases, {
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo
+      owner: orgName,
+      repo: repoName
     })
-    .then(releases => {
-      releasesToDelete = processReleases(releases);
+    .then(rawReleases => {
+      releasesToDelete = processReleases(rawReleases);
     })
     .catch(error => {
       core.setFailed(`An error occurred retrieving the releases: ${error.message}`);
@@ -57,8 +67,8 @@ async function deleteRelease(release) {
   core.info(`\nDeleting release ${release.name} (${release.id})...`);
   await octokit.rest.repos
     .deleteRelease({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: orgName,
+      repo: repoName,
       release_id: release.id
     })
     .then(() => {
@@ -71,8 +81,8 @@ async function deleteRelease(release) {
   core.info(`Deleting tag ${release.tag}...`);
   await octokit.rest.git
     .deleteRef({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: orgName,
+      repo: repoName,
       ref: `tags/${release.tag}`
     })
     .then(() => {
@@ -84,6 +94,7 @@ async function deleteRelease(release) {
 }
 
 async function run() {
+  core.info(`Checking for pre-releases in ${orgName}/${repoName}`);
   const releasesToDelete = await getListOfReleases();
 
   for (const r of releasesToDelete) {
