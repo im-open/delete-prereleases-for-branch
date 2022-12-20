@@ -16417,40 +16417,65 @@ var branchPattern = `-${branchName}.`;
 var octokit = github.getOctokit(token);
 function processReleases(rawReleases) {
   const releasesToDelete = [];
+  const releasesToKeep = [];
   for (const release of rawReleases) {
-    const nameOrTagIncludesBranchPattern = release.name.includes(branchPattern) || release.tag_name.includes(branchPattern);
-    if (release.prerelease && nameOrTagIncludesBranchPattern) {
-      releasesToDelete.push({
-        name: release.name,
-        id: release.id,
-        tag: release.tag_name
-      });
-    } else {
-      const name = release.name;
-      const tag = release.tag_name;
-      const message =
-        name === tag
-          ? `	${name} does not meet the pattern and will not be deleted`
-          : `	$Release {name} with ${tag} does not meet the pattern and will not be deleted`;
-      core.info(message);
+    const releaseName = release.name;
+    const releaseTag = release.tag_name;
+    if (release.prerelease) {
+      const nameOrTagIncludesBranchPattern =
+        (releaseName && releaseName.includes(branchPattern)) || (releaseTag && releaseTag.includes(branchPattern));
+      if (nameOrTagIncludesBranchPattern) {
+        releasesToDelete.push({
+          name: releaseName,
+          id: release.id,
+          tag: releaseTag
+        });
+      } else {
+        releasesToKeep.push(releaseName || releaseTag);
+      }
     }
   }
-  core.info('\nFinished gathering releases, the following items are pre-releases that match the branch pattern.  They will be removed:');
-  for (const r of releasesToDelete) {
-    core.info(`	${r.name}`);
+  if (releasesToKeep.length > 0) {
+    core.info(`
+The following pre-releases do not include '${branchPattern}' and will not be deleted:`);
+    for (const r of releasesToKeep) {
+      core.info(`	${r}`);
+    }
+  } else {
+    const prereleaseMessage =
+      releasesToDelete.length > 0
+        ? `
+All pre-releases include '${branchPattern}'.  No pre-releases will be kept.`
+        : `
+There are no pre-releases in this repository.`;
+    core.info(prereleaseMessage);
+  }
+  if (releasesToDelete.length > 0) {
+    core.info(`
+The following pre-releases include '${branchPattern}' and they will be removed:`);
+    for (const r of releasesToDelete) {
+      core.info(`	${r.name || r.tag}`);
+    }
+  } else {
+    core.info(`
+No pre-releases included '${branchPattern}'. Nothing will be deleted.`);
   }
   return releasesToDelete;
 }
+function sortReleases(releases) {
+  return releases.sort((a, b) => ((a.name || a.tag_name) < (b.name || b.tag_name) ? 1 : (b.name || b.tag_name) < (a.name || a.tag_name) ? -1 : 0));
+}
 async function getListOfReleases() {
   let releasesToDelete = [];
-  core.info(`Gathering list of releases with '${branchPattern}' in the name or tag to delete...`);
+  core.info(`
+Checking for pre-releases for the '${branchNameInput}' branch that include '${branchPattern}' in the name or tag...`);
   await octokit
     .paginate(octokit.rest.repos.listReleases, {
       owner: orgName,
       repo: repoName
     })
     .then(rawReleases => {
-      releasesToDelete = processReleases(rawReleases);
+      releasesToDelete = processReleases(sortReleases(rawReleases));
     })
     .catch(error => {
       core.setFailed(`An error occurred retrieving the releases: ${error.message}`);
