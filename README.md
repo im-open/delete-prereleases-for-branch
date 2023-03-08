@@ -43,7 +43,7 @@ jobs:
     
     steps:
       - name: Clean up the releases that were created for this branch
-        uses: im-open/delete-prereleases-for-branch@v1.1.3
+        uses: im-open/delete-prereleases-for-branch@v1.1.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch-name: ${{ github.head_ref }}
