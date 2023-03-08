@@ -1,6 +1,6 @@
-name: 'delete-prereleases-for-branch'
+name: delete-prereleases-for-branch
 
-description: 'An action to delete pre-releases for a specified branch'
+description: An action to delete pre-releases for a specified branch
 
 inputs:
   github-token:
