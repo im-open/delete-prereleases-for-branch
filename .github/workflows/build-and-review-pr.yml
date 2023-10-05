@@ -203,7 +203,6 @@ jobs:
             await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-name }}');
             await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-tag }}');
       
-      
       # --------------------------------------
       # NOT STRICT MODE
       # --------------------------------------
@@ -315,9 +314,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const getReleaseCount = require('./test/setup/get-release-count.js')
-            
             const originalCount = ${{ steps.original-count.outputs.num-releases }};
+            core.info(`Original release count: ${originalCount}`);
+
+            const getReleaseCount = require('./test/setup/get-release-count.js')
             const newCount = await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
             
             if (originalCount !== newCount) {
@@ -327,7 +327,6 @@ jobs:
               core.info(`The number of releases on GitHub did not change.  It is still ${originalCount}.`);
             }
       
-
       #--------------------------------------
       # NOTHING TO DELETE
       #--------------------------------------
@@ -361,9 +360,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const getReleaseCount = require('./test/setup/get-release-count.js')
-            
             const originalCount = ${{ steps.nothing-to-delete-count.outputs.num-releases }};
+            core.info(`Original release count: ${originalCount}`);
+
+            const getReleaseCount = require('./test/setup/get-release-count.js')
             const newCount = await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
             
             if (originalCount !== newCount) {
@@ -389,7 +389,7 @@ jobs:
             await assertReleaseExists(github, core, repo, '${{ steps.create-strict-releases.outputs.no-match }}');
             await assertReleaseExists(github, core, repo, '${{ steps.create-loose-releases.outputs.no-match }}');
       
-      - name: And delete-prereleases-for-branch is called with a branch that does not match any releases
+      - name: And delete-prereleases-for-branch is called with a branch name that will be sanitized
         uses: ./
         if: always()
         id: sanitize
@@ -404,7 +404,7 @@ jobs:
         if: always()
         run: ./test/assert-values-match.sh --name "step outcome" --expected "success" --actual "${{ steps.sanitize.outcome }}"
       
-      - name: And the pre-releases with 'no-matches' in the tag and name should NOT exist
+      - name: And the pre-releases with the sanitized branch name 'no-matches' in the tag and name should NOT exist
         if: always()
         uses: actions/github-script@v6
         with:
@@ -419,6 +419,7 @@ jobs:
       #--------------------------------------
       - name: '-------------------------------------------------------------------------------------------------------'
         run: echo ""
+      
       - name: Teardown - Cleanup all the releases by deleting them
         if: always()
         uses: actions/github-script@v6
@@ -449,5 +450,5 @@ jobs:
             await deleteTagFromGitHub(github, core, repo, '${{ env.STRICT_MATCHING_NAME_TAG }}');
             await deleteTagFromGitHub(github, core, repo, '${{ env.LOOSE_MATCHING_NAME_TAG }}');
       
-      # - name: '-------------------------------------------------------------------------------------------------------'
-      #   run: echo ""
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""

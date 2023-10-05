@@ -16476,6 +16476,7 @@ Check release ${release.id}`);
     }
   }
   core.endGroup();
+  core.info('Finished processing releases.\n');
   if (regReleasesToKeep.length > 0) {
     core.startGroup('Releases to keep');
     core.info(`
@@ -16534,7 +16535,8 @@ async function run() {
   const branchName = branchNameInput.replace('refs/heads/', '').replace(/[^a-zA-Z0-9-]/g, '-');
   const branchPattern = strictMatchMode ? `-${branchName}.` : branchName;
   core.info(`Strict match mode: ${strictMatchMode}`);
-  core.info(`Branch name: '${branchName}'`);
+  core.info(`Branch name input: '${branchNameInput}'`);
+  core.info(`Sanitized Branch name: '${branchName}'`);
   core.info(`Pattern to match: '${branchPattern}'`);
   const preReleasesToDelete = await getListOfReleases(branchName, branchPattern);
   for (const r of preReleasesToDelete) {

@@ -8,7 +8,7 @@ module.exports = async (github, core, owner, repo) => {
     })
     .then(response => {
       numReleases = response.data.length;
-      core.info(`\nThe repo has ${numReleases} releases.`);
+      core.info(`The repo has ${numReleases} releases.`);
       core.setOutput('num-releases', numReleases);
       return numReleases;
     })
