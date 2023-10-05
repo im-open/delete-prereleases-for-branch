@@ -60,3 +60,394 @@ jobs:
       # The npm script to run to build the action.  This is typically 'npm run build' if the
       # action needs to be compiled.  For composite-run-steps actions this is typically empty.
       build-command: 'npm run build'
+
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      OWNER: 'im-open'
+      REPO: 'delete-prereleases-for-branch'      
+      STRICT_BRANCH: 'strict'
+      LOOSE_BRANCH: 'loose'
+
+      # Have both the tag and name match the pattern.  They won't be deleted though since they are not prereleases.
+      STRICT_PROD_RELEASE_TAG: 'v9.0.0-prod-release-strict.201005123015'
+      LOOSE_PROD_RELEASE_TAG: 'v9.0.0-prod-release-loose.201005123015'
+      STRICT_PROD_RELEASE_NAME: 'v9.0.0-prod-release-strict.201005123015'
+      LOOSE_PROD_RELEASE_NAME: 'v9.0.0-prod-release-loose.201005123015'
+
+      # If we are testing the tag match, the names do not need to be provided
+      STRICT_MATCHING_TAG_TAG: 'v8.0-matching-tag-strict.201005123015'
+      LOOSE_MATCHING_TAG_TAG: 'v8.0-matching-tag-loose.201005123015'
+      STRICT_MATCHING_TAG_NAME: '' # Purposely left blank
+      LOOSE_MATCHING_TAG_NAME: ''  # Purposely left blank
+
+      # If we are testing the name match, the tag needs to be provided but don't match the pattern
+      STRICT_MATCHING_NAME_TAG: 'v7-s-matching-name.201005123015' # provide this but do not match the pattern
+      LOOSE_MATCHING_NAME_TAG: 'v7-l-matching-name.201005123015'  # provide this but do not match the pattern
+      STRICT_MATCHING_NAME_NAME: 'v7-matching-name-strict.201005123015'
+      LOOSE_MATCHING_NAME_NAME: 'v7-matching-name-loose.201005123015'
+      
+      # Neither the tag or the name should match the pattern
+      STRICT_NO_MATCHES_TAG: 'v6-s-no-matches.201005123015'
+      LOOSE_NO_MATCHES_TAG: 'v6-l-no-matches.201005123015'
+      STRICT_NO_MATCHES_NAME: 's-no-matches.201005123015'
+      LOOSE_NO_MATCHES_NAME: 'l-no-matches.201005123015'
+      
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      #--------------------------------------
+      # SETUP
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+      - name: Setup - Dynamically generate tags for each of the scenarios to use with their release
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const now = new Date().toISOString().replace(/[^0-9]/g, '');
+            core.exportVariable('STRICT_PROD_RELEASE_TAG', '${{ env.STRICT_PROD_RELEASE_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_PROD_RELEASE_TAG', '${{ env.LOOSE_PROD_RELEASE_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('STRICT_PROD_RELEASE_NAME', '${{ env.STRICT_PROD_RELEASE_NAME }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_PROD_RELEASE_NAME', '${{ env.LOOSE_PROD_RELEASE_NAME }}'.replace('201005123015', now));    
+            
+            core.exportVariable('STRICT_MATCHING_TAG_TAG', '${{ env.STRICT_MATCHING_TAG_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_MATCHING_TAG_TAG', '${{ env.LOOSE_MATCHING_TAG_TAG }}'.replace('201005123015', now));    
+          
+            core.exportVariable('STRICT_MATCHING_NAME_TAG', '${{ env.STRICT_MATCHING_NAME_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_MATCHING_NAME_TAG', '${{ env.LOOSE_MATCHING_NAME_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('STRICT_MATCHING_NAME_NAME', '${{ env.STRICT_MATCHING_NAME_NAME }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_MATCHING_NAME_NAME', '${{ env.LOOSE_MATCHING_NAME_NAME }}'.replace('201005123015', now));    
+            
+            core.exportVariable('STRICT_NO_MATCHES_TAG', '${{ env.STRICT_NO_MATCHES_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_NO_MATCHES_TAG', '${{ env.LOOSE_NO_MATCHES_TAG }}'.replace('201005123015', now));    
+            core.exportVariable('STRICT_NO_MATCHES_NAME', '${{ env.STRICT_NO_MATCHES_NAME }}'.replace('201005123015', now));    
+            core.exportVariable('LOOSE_NO_MATCHES_NAME', '${{ env.LOOSE_NO_MATCHES_NAME }}'.replace('201005123015', now));
+      
+      #--------------------------------------
+      # STRICT MODE
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+
+      - name: When releases are created on GitHub
+        if: always()
+        id: create-strict-releases
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const createRelease = require('./test/setup/create-release-on-github.js');
+
+            // Set up the static args which are the same for every release
+            const staticArgs = { github, core, owner: '${{ env.OWNER }}', repo: '${{ env.REPO }}' };
+
+            // We expect these releases to stick around because they do not match the conditions for deletion
+            const prodRelease = { outputName: 'prod-release', prerelease: false, tag: '${{ env.STRICT_PROD_RELEASE_TAG }}', name: '${{ env.STRICT_PROD_RELEASE_NAME }}' };
+            const preWithNoMatchingTagOrName = { outputName: 'no-match', prerelease: true, tag: '${{ env.STRICT_NO_MATCHES_TAG }}', name: '${{ env.STRICT_NO_MATCHES_NAME }}'};
+
+            // We expect these releases to be deleted because they match the conditions for deletion
+            const preWithMatchingName = { outputName: 'matching-name', prerelease: true, tag: '${{ env.STRICT_MATCHING_NAME_TAG }}', name: '${{ env.STRICT_MATCHING_NAME_NAME }}'};
+            const preWithMatchingTag = { outputName: 'matching-tag', prerelease: true, tag: '${{ env.STRICT_MATCHING_TAG_TAG }}', name: '${{ env.STRICT_MATCHING_TAG_NAME }}'};
+            
+            // Create the releases
+            await createRelease(staticArgs, prodRelease);
+            await createRelease(staticArgs, preWithNoMatchingTagOrName);
+            await createRelease(staticArgs, preWithMatchingName);
+            await createRelease(staticArgs, preWithMatchingTag);
+            
+            const secondsToWait = 5;
+            core.info(`Sleep for ${secondsToWait} seconds to ensure the api has a chance to catch up before we start deleting prereleases.`);
+            await new Promise(r => setTimeout(r, secondsToWait * 1000));
+            
+      - name: And delete-prereleases-for-branch is called with strict mode on
+        uses: ./
+        if: always()
+        id: delete-strict-releases
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-name: ${{ env.STRICT_BRANCH }}
+          strict-match-mode: true
+      
+      - name: Then the outcome should be success
+        if: always()
+        run: ./test/assert-values-match.sh --name "step outcome" --expected "success" --actual "${{ steps.delete-strict-releases.outcome }}"
+
+      - name: And prod releases should still exist on GitHub even if their name and tag include '-${{ env.STRICT_BRANCH }}.'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseExists = require('./test/assert-release-exists.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseExists(github, core, repo, '${{ steps.create-strict-releases.outputs.prod-release }}');
+      
+      - name: And pre-releases should still exist on GitHub if their name and tag do not include '-${{ env.STRICT_BRANCH }}.'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseExists = require('./test/assert-release-exists.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseExists(github, core, repo, '${{ steps.create-strict-releases.outputs.no-match }}');
+      
+      - name: And pre-releases should NOT exist if their name or tag include '-${{ env.STRICT_BRANCH }}.'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseDoesNotExist = require('./test/assert-release-does-not-exist.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-name }}');
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-tag }}');
+      
+      
+      # --------------------------------------
+      # NOT STRICT MODE
+      # --------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+
+      - name: When releases are created on GitHub
+        if: always()
+        id: create-loose-releases
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const createRelease = require('./test/setup/create-release-on-github.js');
+
+            // Set up the static args which are the same for every release
+            const staticArgs = { github, core, owner: '${{ env.OWNER }}', repo: '${{ env.REPO }}' };
+
+            // We expect these releases to stick around because they do not match the conditions for deletion
+            const prodRelease = { outputName: 'prod-release', prerelease: false, tag: '${{ env.LOOSE_PROD_RELEASE_TAG }}', name: '${{ env.LOOSE_PROD_RELEASE_NAME }}' };
+            const preWithNoMatchingTagOrName = { outputName: 'no-match', prerelease: true, tag: '${{ env.LOOSE_NO_MATCHES_TAG }}', name: '${{ env.LOOSE_NO_MATCHES_NAME }}'};
+
+            // We expect these releases to be deleted because they match the conditions for deletion
+            const preWithMatchingName = { outputName: 'matching-name', prerelease: true, tag: '${{ env.LOOSE_MATCHING_NAME_TAG }}', name: '${{ env.LOOSE_MATCHING_NAME_NAME }}'};
+            const preWithMatchingTag = { outputName: 'matching-tag', prerelease: true, tag: '${{ env.LOOSE_MATCHING_TAG_TAG }}', name: '${{ env.LOOSE_MATCHING_TAG_NAME }}'};
+            
+            // Create the releases
+            await createRelease(staticArgs, prodRelease);
+            await createRelease(staticArgs, preWithNoMatchingTagOrName);
+            await createRelease(staticArgs, preWithMatchingName);
+            await createRelease(staticArgs, preWithMatchingTag);
+            
+            const secondsToWait = 5;
+            core.info(`Sleep for ${secondsToWait} seconds to ensure the api has a chance to catch up before we start deleting prereleases.`);
+            await new Promise(r => setTimeout(r, secondsToWait * 1000));
+            
+      - name: And delete-prereleases-for-branch is called with strict mode off
+        uses: ./
+        if: always()
+        id: delete-loose-releases
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-name: ${{ env.LOOSE_BRANCH }}
+          strict-match-mode: false
+      
+      - name: Then the outcome should be success
+        if: always()
+        run: ./test/assert-values-match.sh --name "step outcome" --expected "success" --actual "${{ steps.delete-loose-releases.outcome }}"
+
+      - name: And prod releases should still exist on GitHub even if their name and tag include '${{ env.LOOSE_BRANCH }}'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseExists = require('./test/assert-release-exists.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseExists(github, core, repo, '${{ steps.create-loose-releases.outputs.prod-release }}');
+      
+      - name: And pre-releases should still exist on GitHub if their name and tag do not include '${{ env.LOOSE_BRANCH }}'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseExists = require('./test/assert-release-exists.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseExists(github, core, repo, '${{ steps.create-loose-releases.outputs.no-match }}');
+      
+      - name: And pre-releases should NOT exist if their name or tag include '${{ env.LOOSE_BRANCH }}'
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseDoesNotExist = require('./test/assert-release-does-not-exist.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-name }}');
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-tag }}');
+      
+      #--------------------------------------
+      # FAILURE
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+      
+      - name: When releases exist on GitHub
+        if: always()
+        uses: actions/github-script@v6
+        id: original-count
+        with:
+          script: |
+            const getReleaseCount = require('./test/setup/get-release-count.js')
+            await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
+
+      - name: And a failure happens when delete-prereleases-for-branch is called with bad credentials
+        uses: ./
+        if: always()
+        id: does-not-exist
+        continue-on-error: true # This is needed because we expect the step to fail.  We need it to "pass" in order for the test job to succeed.
+        with:
+          github-token: 'abc123'
+          branch-name: 'no-matches'  # If the action worked, it would have two releases to delete with this branch name
+          strict-match-mode: false
+      
+      - name: Then the outcome should be failure
+        if: always()
+        run: ./test/assert-values-match.sh --name "step outcome" --expected "failure" --actual "${{ steps.does-not-exist.outcome }}"
+      
+      - name: And the release count on GitHub should not have changed
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const getReleaseCount = require('./test/setup/get-release-count.js')
+            
+            const originalCount = ${{ steps.original-count.outputs.num-releases }};
+            const newCount = await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
+            
+            if (originalCount !== newCount) {
+              core.setFailed(`The number of releases on GitHub changed from ${originalCount} to ${newCount}.  It should not have changed.`);
+            }
+            else {
+              core.info(`The number of releases on GitHub did not change.  It is still ${originalCount}.`);
+            }
+      
+
+      #--------------------------------------
+      # NOTHING TO DELETE
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+      
+      - name: When releases exist on GitHub
+        if: always()
+        uses: actions/github-script@v6
+        id: nothing-to-delete-count
+        with:
+          script: |
+            const getReleaseCount = require('./test/setup/get-release-count.js')
+            await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
+
+      - name: And delete-prereleases-for-branch is called with a branch that does not match any releases
+        uses: ./
+        if: always()
+        id: nothing-to-delete
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-name: 'grandma-crab-was-a-rolling-pterosaur'
+          strict-match-mode: false
+      
+      - name: Then the outcome should be success
+        if: always()
+        run: ./test/assert-values-match.sh --name "step outcome" --expected "success" --actual "${{ steps.nothing-to-delete.outcome }}"
+      
+      - name: And the release count on GitHub should not have changed
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const getReleaseCount = require('./test/setup/get-release-count.js')
+            
+            const originalCount = ${{ steps.nothing-to-delete-count.outputs.num-releases }};
+            const newCount = await getReleaseCount(github, core, '${{ env.OWNER }}', '${{ env.REPO }}');
+            
+            if (originalCount !== newCount) {
+              core.setFailed(`The number of releases on GitHub changed from ${originalCount} to ${newCount}.  It should not have changed.`);
+            }
+            else {
+              core.info(`The number of releases on GitHub did not change.  It is still ${originalCount}.`);
+            }
+      
+      #--------------------------------------
+      # SANITIZE BRANCH NAME
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+      
+      - name: When releases exist on GitHub
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseExists = require('./test/assert-release-exists.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseExists(github, core, repo, '${{ steps.create-strict-releases.outputs.no-match }}');
+            await assertReleaseExists(github, core, repo, '${{ steps.create-loose-releases.outputs.no-match }}');
+      
+      - name: And delete-prereleases-for-branch is called with a branch that does not match any releases
+        uses: ./
+        if: always()
+        id: sanitize
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          strict-match-mode: false
+          # The loose and strict scenarios created tags with 'no-matches' in them.  When this  
+          # action runs it should sanitize this branch name and delete those two releases.
+          branch-name: 'refs/heads/no@matches'  
+
+      - name: Then the outcome should be success
+        if: always()
+        run: ./test/assert-values-match.sh --name "step outcome" --expected "success" --actual "${{ steps.sanitize.outcome }}"
+      
+      - name: And the pre-releases with 'no-matches' in the tag and name should NOT exist
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const assertReleaseDoesNotExist = require('./test/assert-release-does-not-exist.js');
+            const repo = '${{ env.REPO }}';
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-name }}');
+            await assertReleaseDoesNotExist(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-tag }}');
+
+      #--------------------------------------
+      # TEARDOWN
+      #--------------------------------------
+      - name: '-------------------------------------------------------------------------------------------------------'
+        run: echo ""
+      - name: Teardown - Cleanup all the releases by deleting them
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Some of these should have been deleted by the tests, but just in case something went wrong, try
+            // deleting everything so there aren't a bunch of leftover releases/tags cluttering up the repo.
+            const repo = '${{ env.REPO }}';
+
+            const deleteReleaseFromGitHub = require('./test/teardown/delete-release-from-github.js')
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-strict-releases.outputs.prod-release }}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-strict-releases.outputs.no-match}}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-name}}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-strict-releases.outputs.matching-tag}}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-loose-releases.outputs.prod-release }}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-loose-releases.outputs.no-match}}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-name}}');
+            await deleteReleaseFromGitHub(github, core, repo, '${{ steps.create-loose-releases.outputs.matching-tag}}');
+            
+            const deleteTagFromGitHub = require('./test/teardown/delete-tag-from-github.js')
+            await deleteTagFromGitHub(github, core, repo, '${{ env.STRICT_PROD_RELEASE_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.LOOSE_PROD_RELEASE_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.STRICT_MATCHING_TAG_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.LOOSE_MATCHING_TAG_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.STRICT_NO_MATCHES_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.LOOSE_NO_MATCHES_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.STRICT_MATCHING_NAME_TAG }}');
+            await deleteTagFromGitHub(github, core, repo, '${{ env.LOOSE_MATCHING_NAME_TAG }}');
+      
+      # - name: '-------------------------------------------------------------------------------------------------------'
+      #   run: echo ""

@@ -9,6 +9,10 @@ inputs:
   branch-name:
     description: 'The branch the releases were created for.'
     required: true
+  strict-match-mode:
+    description: 'Flag that determines the pattern the action will use to identify matches in the release name and tag.'
+    required: false
+    default: 'true'
 
 runs:
   using: 'node16'
