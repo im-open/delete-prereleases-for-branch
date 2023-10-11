@@ -96,13 +96,15 @@ jobs:
       
     
     steps:
-      - uses: actions/checkout@v3
-
       #--------------------------------------
       # SETUP
       #--------------------------------------
       - name: '-------------------------------------------------------------------------------------------------------'
         run: echo ""
+      
+      - name: Setup - checkout the action
+        uses: actions/checkout@v3
+
       - name: Setup - Dynamically generate tags for each of the scenarios to use with their release
         uses: actions/github-script@v6
         with:
