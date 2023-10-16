@@ -1,3 +1,7 @@
+# Tests
+
+Force tests to run from a fork to see what happens
+
 # delete-prereleases-for-branch
 
 This action will retrieve a list of releases for the repository and delete any releases and associated tags that:
