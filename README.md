@@ -2,13 +2,13 @@
 
 This action will retrieve a list of releases for the repository and delete any releases and associated tags that:
 
-- Are marked as pre-release.  
+- Are marked as pre-release.
   - This action will not delete regular releases.
 - Are returned in the [list releases] API call.
   - Depending on the permissions of the token it may return only published releases (not draft releases).
 - Have a release name or tag that follows [im-open/git-version-lite]'s format:
   - Format: `major.minor.patch-<sanitized-branch-name>.<formated-date>`
-  - To sanitize the branch name, the characters `a-z, A-Z, 0-9, -` are kept and any other character is replaced with `-`.  
+  - To sanitize the branch name, the characters `a-z, A-Z, 0-9, -` are kept and any other character is replaced with `-`.
 
 If the action runs into an issue deleting a specific release, it will generate a warning that can be viewed in the Summary section of the workflow rather than failing the step.  Errors retrieving the releases will still cause the action to fail though.
 
@@ -26,7 +26,7 @@ If the action runs into an issue deleting a specific release, it will generate a
     - [Tests](#tests)
   - [Code of Conduct](#code-of-conduct)
   - [License](#license)
-  
+
 ## Inputs
 
 | Parameter           | Is Required | Description                                                                                                                                                                                                                                                   |
@@ -48,10 +48,10 @@ on:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Clean up the releases that were created for this branch
-        uses: im-open/delete-prereleases-for-branch@v1.2.0  # Major (@v1) and major.minor (@v1.2) tags are also available
+        uses: im-open/delete-prereleases-for-branch@v1.3.0  # Major (@v1) and major.minor (@v1.3) tags are also available
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch-name: ${{ github.head_ref }}
@@ -81,7 +81,7 @@ This repo uses [git-version-lite] in its workflows to examine commit messages to
 
 ### Source Code Changes
 
-The files and directories that are considered source code are listed in the `files-with-code` and `dirs-with-code` arguments in both the [build-and-review-pr] and [increment-version-on-merge] workflows.  
+The files and directories that are considered source code are listed in the `files-with-code` and `dirs-with-code` arguments in both the [build-and-review-pr] and [increment-version-on-merge] workflows.
 
 If a PR contains source code changes, the README.md should be updated with the latest action version and the action should be recompiled.  The [build-and-review-pr] workflow will ensure these steps are performed when they are required.  The workflow will provide instructions for completing these steps if the PR Author does not initially complete them.
 
@@ -102,7 +102,7 @@ If changes are made to the action's [source code], the [usage examples] section 
 
 ### Tests
 
-The [build-and-review-pr] workflow includes tests which are linked to a status check. That status check needs to succeed before a PR is merged to the default branch.  When a PR comes from a branch, the `GITHUB_TOKEN` has the necessary permissions required to run the tests successfully.  
+The [build-and-review-pr] workflow includes tests which are linked to a status check. That status check needs to succeed before a PR is merged to the default branch.  When a PR comes from a branch, the `GITHUB_TOKEN` has the necessary permissions required to run the tests successfully.
 
 When a PR comes from a fork, the tests won't have the necessary permissions to run since the `GITHUB_TOKEN` only has `read` access for all scopes. When a PR comes from a fork, the changes should be reviewed, then merged into an intermediate branch by repository owners so tests can be run against the PR changes.  Once the tests have passed, changes can be merged into the default branch.
 
